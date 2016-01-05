@@ -1,0 +1,170 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Quantum physics: I set of exercises - Solutions}
+\author{Giancarlo Fissore}
+\date{January 2015}
+\maketitle
+
+\section{Oscillating wavepacket}
+
+\section{3D square well}
+
+\section{Double well potential}
+
+\subsection{Schroedinger equation and boundary conditions}
+First of all, the Schroedinger equation for the problem is presented below.
+
+For \(\left|x\right| < a\):
+
+\begin{equation}
+\label{eq:schr1}
+-\frac{\hbar^2}{2m}\psi_{1}(x) + V_{0}\psi_{1}(x) = E\psi_{1}(x)
+\end{equation}
+
+For \(a < \left|x\right| < L\):
+
+\begin{equation}
+\label{eq:schr2}
+-\frac{\hbar^2}{2m}\psi_{2}(x) = E\psi_{2}(x)
+\end{equation}
+
+For \(\left|x\right| > L\):
+
+\begin{equation}
+\label{eq:schr3}
+-\frac{\hbar^2}{2m}\psi_{3}(x) = E\psi_{3}(x)
+\end{equation}
+
+Obviously the wave function for \(\left|x\right| > L\) must be null, as the potential is infinite in such region, thus we have
+
+\begin{equation}
+\psi_{3}(x) = 0
+\end{equation}
+
+The total wave function must be continuous and with continuous first derivative, thus we impose the following boundary conditions
+
+\begin{equation}
+\label{eq:continuity}
+\psi_{1}(a) =  \psi_{2}(a), \quad \psi_{1}(-a) =  \psi_{2}(-a)
+\end{equation}
+
+\begin{equation}
+\label{eq:continuity_derivative}
+\psi_{1}'(a) =  \psi_{2}'(a), \quad \psi_{1}'(-a) =  \psi_{2}'(-a)
+\end{equation}
+
+\begin{equation}
+\label{eq:null_bound}
+\psi_{2}(L) =  \psi_{3}(L) = 0
+\end{equation}
+
+\subsection{Solutions with definite parity}
+To simplify the treatment of the problem, it is useful to note that because of the simmetry of the potential the Hamiltonian is commuting with the parity operator. This is easily shown below
+
+\begin{align*}
+[H, \hat{\pi}] \Psi(x) & = H \hat{\pi} \Psi(x) - \hat{\pi} H \Psi(x) \\ 
+  & = \left(-\frac{\hbar^2}{2m} + V(x)\right)\Psi(-x) -  \hat{\pi} \left(-\frac{\hbar^2}{2m} + V(x)\right)\Psi(x) \\ & = \left(-\frac{\hbar^2}{2m} + V(x)\right)\Psi(-x) -  \left(-\frac{\hbar^2}{2m} + V(-x)\right)\Psi(-x)
+\end{align*}
+
+\begin{equation}
+\label{eq:parity_commutation}
+V(x) = V(-x) \Rightarrow \left[H,\hat{\pi} \right] = 0
+\end{equation}
+
+Applying \(\hat{\pi}\) to one of its eigenfunctions twice, the original function is retrieved
+
+\begin{equation}
+\hat{\pi}^2f(x) = \hat{\pi}f(-x) = f(x)
+\end{equation}
+
+Therefore, the operator \(\hat{\pi}\) has eigenvalues \(\pm\) 1 and all of its eigenfunctions have definite parity - either even or odd. As \(\hat{\pi}\) commutes with \(H\), there must exist a simultaneous base of \(H\) and \(\hat{\pi}\) which is formed by eigenfunctions with definite parity. To solve the problem it is then possible to look for solutions which are either even or odd.
+
+\subsection{Even solutions}
+Starting with even solutions, eq. \eqref{eq:schr1}, \eqref{eq:schr2}, \eqref{eq:schr3} and the boundary conditions \eqref{eq:continuity}, \eqref{eq:null_bound} are satisfied by
+
+\begin{equation}
+\psi_{1}(x) = A cosh(k_{1} x), \qquad k_{1} = \frac{\sqrt{2m(V_{0} - E)}}{\hbar}
+\end{equation}
+
+\begin{equation}
+\psi_{2}(x) = B sin(k_{2}(x-L)), \qquad k_{2} = \frac{\sqrt{2mE}}{\hbar}
+\end{equation}
+
+Substituting into \eqref{eq:continuity}, \eqref{eq:continuity_derivative} the following equations are obtained
+
+\begin{equation}
+\label{eq:cont_even}
+A cosh(k_{1}a) =  B sin(k_{2}(a-L))
+\end{equation}
+
+\begin{equation}
+\label{eq:cont_der_even}
+A k_{1} sinh(k_{1}a) =  B k_{2} cos(k_{2}(a-L))
+\end{equation}
+
+Dividing \eqref{eq:cont_der_even} by \eqref{eq:cont_even} the following trascendental equation is obtained
+
+\begin{equation}
+k_{1} tanh(k_{1}a) = k_{2} cot(k_{2}(a-L))
+\end{equation}
+
+whose solution gives the values for the allowed energies.
+
+The complete even solution is then given by
+
+\begin{equation}
+\Psi_{E}(x) = 
+  \begin{cases} 
+      \psi_{1}(x) & \left|x\right| < a \\
+      \psi_{2}(x) & a < x < L \\
+      \psi_{2}(-x) & -L < x < -a \\
+      \psi_{3}(x) & \left|x\right| > L
+   \end{cases}
+\end{equation}
+
+\subsection{Odd solutions}
+Odd solutions are given by
+
+\begin{equation}
+\psi_{1}(x) = C sinh(k_{1} x), \qquad k_{1} = \frac{\sqrt{2m(V_{0} - E)}}{\hbar}
+\end{equation}
+
+\begin{equation}
+\psi_{2}(x) = D sin(k_{2}(x-L)), \qquad k_{2} = \frac{\sqrt{2mE}}{\hbar}
+\end{equation}
+
+Substituting again into \eqref{eq:continuity}, \eqref{eq:continuity_derivative} we obtain
+
+\begin{equation}
+\label{eq:cont_odd}
+C sinh(k_{1}a) =  D sin(k_{2}(a-L))
+\end{equation}
+
+\begin{equation}
+\label{eq:cont_der_odd}
+C k_{1} sinh(k_{1}a) =  D k_{2} cos(k_{2}(a-L))
+\end{equation}
+
+and dividing \eqref{eq:cont_der_odd} by \eqref{eq:cont_odd} another trascendental equation is obtained
+
+\begin{equation}
+k_{1} coth(k_{1}a) = k_{2} cot(k_{2}(a-L))
+\end{equation}
+
+The complete odd solution is given by
+
+\begin{equation}
+\Psi_{O}(x) = 
+  \begin{cases} 
+      \psi_{1}(x) & \left|x\right| < a \\
+      \psi_{2}(x) & a < x < L \\
+      -\psi_{2}(x) & -L < x < -a \\
+      \psi_{3}(x) & \left|x\right| > L
+   \end{cases}
+\end{equation}
+
+\end{document}
