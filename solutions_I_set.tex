@@ -2,6 +2,10 @@
 
 \usepackage{amsmath}
 
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\graphicspath{{img/}}
+
 \begin{document}
 
 \title{Quantum physics: I set of exercises - Solutions}
@@ -99,24 +103,25 @@ Starting with even solutions, eq. \eqref{eq:schr1}, \eqref{eq:schr2}, \eqref{eq:
 \end{equation}
 
 \begin{equation}
-\psi_{2}(x) = B sin(k_{2}(x-L)), \qquad k_{2} = \frac{\sqrt{2mE}}{\hbar}
+\psi_{2}(x) = - B sin(k_{2}(x-L)), \qquad k_{2} = \frac{\sqrt{2mE}}{\hbar}
 \end{equation}
 
 Substituting into \eqref{eq:continuity}, \eqref{eq:continuity_derivative} the following equations are obtained
 
 \begin{equation}
 \label{eq:cont_even}
-A cosh(k_{1}a) =  B sin(k_{2}(a-L))
+A cosh(k_{1}a) =  - B sin(k_{2}(a-L))
 \end{equation}
 
 \begin{equation}
 \label{eq:cont_der_even}
-A k_{1} sinh(k_{1}a) =  B k_{2} cos(k_{2}(a-L))
+A k_{1} sinh(k_{1}a) = - B k_{2} cos(k_{2}(a-L))
 \end{equation}
 
-Dividing \eqref{eq:cont_der_even} by \eqref{eq:cont_even} the following trascendental equation is obtained
+Dividing \eqref{eq:cont_der_even} by \eqref{eq:cont_even} the following transcendental equation is obtained
 
 \begin{equation}
+\label{eq:trans_even}
 k_{1} tanh(k_{1}a) = k_{2} cot(k_{2}(a-L))
 \end{equation}
 
@@ -142,7 +147,7 @@ Odd solutions are given by
 \end{equation}
 
 \begin{equation}
-\psi_{2}(x) = D sin(k_{2}(x-L)), \qquad k_{2} = \frac{\sqrt{2mE}}{\hbar}
+\psi_{2}(x) = - D sin(k_{2}(x-L)), \qquad k_{2} = \frac{\sqrt{2mE}}{\hbar}
 \end{equation}
 
 Substituting again into \eqref{eq:continuity}, \eqref{eq:continuity_derivative} we obtain
@@ -154,12 +159,13 @@ C sinh(k_{1}a) =  D sin(k_{2}(a-L))
 
 \begin{equation}
 \label{eq:cont_der_odd}
-C k_{1} sinh(k_{1}a) =  D k_{2} cos(k_{2}(a-L))
+C k_{1} sinh(k_{1}a) =  - D k_{2} cos(k_{2}(a-L))
 \end{equation}
 
-and dividing \eqref{eq:cont_der_odd} by \eqref{eq:cont_odd} another trascendental equation is obtained
+and dividing \eqref{eq:cont_der_odd} by \eqref{eq:cont_odd} another transcendental equation is obtained
 
 \begin{equation}
+\label{eq:trans_odd}
 k_{1} coth(k_{1}a) = k_{2} cot(k_{2}(a-L))
 \end{equation}
 
@@ -170,9 +176,41 @@ The complete odd solution is given by
   \begin{cases} 
       \psi_{1}(x) & \left|x\right| < a \\
       \psi_{2}(x) & a < x < L \\
-      -\psi_{2}(x) & -L < x < -a \\
+      -\psi_{2}(-x) & -L < x < -a \\
       \psi_{3}(x) & \left|x\right| > L
    \end{cases}
 \end{equation}
+
+\subsection{Graphic solution}
+The second member of the two transcendental equations \eqref{eq:trans_even} and \eqref{eq:trans_odd}, for even and odd solutions, is the same function of \(k_{2}\):
+
+\begin{equation}
+f(k_{2}) = k_{2}cot(k_{2}(a-L))
+\end{equation}
+
+The intersections of the first member of each equation with such function give the allowed energies for even and odd solutions (see fig. \ref{graph_sol_ex_1_3}).
+
+\begin{figure}
+\centering
+\includegraphics{graph_sol_ex_1_3.eps}
+\caption{graphic solution of transcendental equation to get allowed energy values}
+\label{graph_sol_ex_1_3}
+\end{figure}
+
+In fig. \ref{ex_1_3_ground_energies} we can see the intersections revealing the energies for the ground and first excited states. The intersection lower in energy is related to even solutions, while the other interesection is related to odd solutions. Therefore, the ground state is even while the first excited state is odd. The wavefunctions for ground and first excited states are presented in fig. \ref{ex_1_3_psi}.
+
+\begin{figure}
+\centering
+\includegraphics{ex_1_3_ground_energies.eps}
+\caption{intersections revealing energies for the ground and first excited states}
+\label{ex_1_3_ground_energies}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{ex_1_3_psi.eps}
+\caption{wave functions for ground and first excited states}
+\label{ex_1_3_psi}
+\end{figure}
 
 \end{document}
