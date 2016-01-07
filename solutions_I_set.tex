@@ -20,7 +20,71 @@
 \section{3D square well}
 
 \subsection{Radial Schroedinger equation}
-Because of the spherical simmetry of the potential, the hamiltonian of the problem commutes with the angular momentum operators \(L^2\) and \(L_{z}\) whose eigenfunctions are the spherical harmonics \(Y_{l}^m(\theta,\phi)\). The solutions of the problem will then have the following form:
+Because of the spherical simmetry of the potential, it is a good choice to use spherical coordinates in solving the problem. We recall the expression of the laplacian in spherical coordinates
+
+\begin{equation}
+\label{eq:laplacian_spher}
+\nabla^2 = \frac{1}{r^2} \left( \frac{\partial}{\partial r} r^2 \frac{\partial}{\partial r} + \frac{1}{sin\theta} \frac{\partial}{\partial \theta} sin\theta \frac{\partial}{\partial \theta} + \frac{1}{sin^2\theta} \frac{\partial^2}{\partial \varphi^2} \right)
+\end{equation}
+
+The hamiltonian of the problem is
+
+\begin{equation}
+\label{eq:hamiltonian_spher}
+H = \frac{p^2}{2m} + V(r) = -\frac{\hbar^2 \nabla^2}{2m} + V(r)
+\end{equation}
+
+and the time-independent Schroedinger equation is
+
+\begin{equation}
+\label{eq:schroedinger_ti}
+H\Psi(\bm{r}) = E\Psi(\bm{r})
+\end{equation}
+
+Eq. \eqref{eq:laplacian_spher} and \eqref{eq:hamiltonian_spher} suggest the existence of factorized solutions for \eqref{eq:schroedinger_ti}. Moreover, because of the spherical simmetry of the potential, the hamiltonian of the problem commutes with the angular momentum operators \(L^2\) and \(L_{z}\) whose eigenfunctions are the spherical harmonics \(Y_{l}^m(\theta,\phi)\). The solutions of the problem will then have the following form:
+
+\begin{equation}
+\label{eq:factorized_psi}
+\Psi(\bm{r}) = \varphi(r) Y_{l}^m(\theta,\phi)
+\end{equation}
+
+To solve for the radial component is then necessary to recall the following equations:
+
+\begin{equation}
+\label{eq:p2_decomposed}
+p^2 = p_{r}^2 + \frac{L^2}{r^2}
+\end{equation}
+
+\begin{equation}
+\label{eq:p_radial}
+p_{r} = -i\hbar \left( \frac{\partial}{\partial r} + \frac{1}{r} \right)
+\end{equation}
+
+\begin{equation}
+\label{eq:L2_eigenvalues}
+L^2 Y_{l}^m(\theta, \phi) = \hbar^2 l(l+1) Y_{l}^m(\theta, \phi)
+\end{equation}
+
+Using \eqref{eq:p2_decomposed}, \eqref{eq:factorized_psi} and \eqref{eq:L2_eigenvalues} 
+it is easy to show that the time-independent Schroedinger equation \eqref{eq:schroedinger_ti} becomes
+
+\begin{equation}
+\left[ \frac{1}{2m} \left( p_{r}^2 + \frac{\hbar^2 l(l+1)}{r^2} \right) + V(r) \right] \varphi(r) Y_{l}^m(\theta, \phi) = E \varphi(r) Y_{l}^m(\theta, \phi)
+\end{equation}
+
+Canceling out the spherical harmonics and plugging in eq. \eqref{eq:p_radial} we obtain the radial Schroedinger equation
+
+\begin{equation}
+\label{eq:schroedinger_radial}
+\frac{d^2 \varphi}{dr^2} + \frac{2}{r} \frac{d\varphi}{dr} + \left\{ \frac{2m}{\hbar^2} \left[ E - V(r) \right] - \frac{l \left(l+1 \right)}{r^2} \right\} \varphi = 0
+\end{equation}
+
+As the value \(l\) appears in the equation, the value of the solution will depend on \(l\):
+
+\[ \varphi(r) \Rightarrow \varphi_l(r) \]
+
+\subsection{Solution to the radial Schroedinger equation}
+
 
 \section{Double well potential}
 
