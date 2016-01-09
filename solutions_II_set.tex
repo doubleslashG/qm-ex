@@ -63,7 +63,7 @@ The first order correction to the energy eigenvalues is given by
 
 \begin{equation}
 \label{eq:energy_correction}
-E_n^1 = \bra{n^0} H_1 \ket{n^0} = \left( \frac{\hbar}{2m \omega} \right)^2 \bra{n^0} \left( \bm{a^+} + \bm{a} \right)^4 \ket{n^0}
+E_n^1 = \bra{n^0} H_1 \ket{n^0} = \lambda \left( \frac{\hbar}{2m \omega} \right)^2 \bra{n^0} \left( \bm{a^+} + \bm{a} \right)^4 \ket{n^0}
 \end{equation}
 
 We then need to evaluate
@@ -95,19 +95,21 @@ and being the eigenstates of \( H_0 \) of course orthogonal
 if we plug eq. \eqref{eq:4expansion} into eq. \eqref{eq:energy_correction} it is clear that the only terms which are not null are those in which \( \bm{a^+} \) and \(\bm{a} \) are applied the same number of times. Then
 
 \begin{equation}
+\label{eq:a_sandwich}
 \bra{n^0} \left( \bm{a^+} + \bm{a} \right)^4 \ket{n^0}
 \end{equation}
 
 simplifies to
 
 \begin{equation}
+\label{eq:simplified_a_sandwich}
 \bra{n^0} \left( {\bm{a^+}}^2 \bm{a}^2 + (\bm{a^+} \bm{a})^2 + \bm{a^+} \bm{a}^2 \bm{a^+} + \bm{a} {\bm{a^+}}^2 \bm{a} + (\bm{a} \bm{a^+})^2 + \bm{a}^2 {\bm{a^+}}^2 \right) \ket{n^0}
 \end{equation}
 
 Recalling the number operator \( \bm{ \hat{n} } \)
 
 \begin{equation}
-\bm{ \hat{n} } = \bm{a^+} \bm{a}
+\bm{ \hat{n} } = \bm{a^+} \bm{a}, \quad \bm{ \hat{n} } \ket{n^0} = n\ket{n^0}
 \end{equation}
 
 and the relation
@@ -138,8 +140,45 @@ we obtain
 (\bm{a} \bm{a^+})^2 = (\bm{a^+} \bm{a} + 1)^2 = \bm{ \hat{n} }^2 + 2 \bm{ \hat{n} } + 1
 \end{equation}
 
+\begin{align}
+\bm{a}^2 {\bm{a^+}}^2 & = \bm{a} (\bm{a} \bm{a^+}) \bm{a^+} \nonumber \\
+& = \bm{a} \bm{a^+} + (\bm{a} \bm{a^+})^2 \nonumber \\
+& = 1 + \bm{a^+} \bm{a} + (1 + \bm{a^+} \bm{a})^2 \nonumber \\
+& = \bm{ \hat{n} }^2 + 3 \bm{ \hat{n} } + 2
+\end{align}
+
+Eq. \eqref{eq:a_sandwich} then becomes
+
+
+\begin{align}
+\bra{n^0} \left( \bm{a^+} + \bm{a} \right)^4 \ket{n^0} & = \bra{n^0} \left( \bm{ 6 \hat{n} }^2 + 6 \bm{ \hat{n} } + 3 \right)^4 \ket{n^0} \nonumber \\
+& = 3 (2n^2 + 2n +1) \braket{n^0}{n^0} \nonumber \\
+& = 3(2n^2 + 2n +1)
+\end{align}
+
+and the first order correction to the energy \eqref{eq:energy_correction} reads
+
+\begin{align}
+E_n^1 & = \bra{n^0} H_1 \ket{n^0} \nonumber \\
+& = \lambda \left( \frac{\hbar}{2m \omega} \right)^2 \bra{n^0} \left( \bm{a^+} + \bm{a} \right)^4 \ket{n^0} \nonumber \\
+& = 3 \lambda \left( \frac{\hbar}{2m \omega} \right)^2 (2n^2 + 2n +1)
+\end{align}
+
+Energies for the total hamiltonian up to first order are then given by
+
+\begin{align}
+E_n & = E_n^0 + E_n^1 \nonumber \\
+& = \left( n + \frac{1}{2} \right) \hbar \omega + 3 \lambda \left( \frac{\hbar^2}{2m\omega} \right)^2 (2n^2 + 2n +1)
+\end{align}
+
+For ground and first-excited states we have
+
 \begin{equation}
-\bm{a}^2 {\bm{a^+}}^2 = \bm{a} (\bm{a} \bm{a^+}) \bm{a^+} = \bm{a} \bm{a^+} + (\bm{a} \bm{a^+})^2 = 1 + \bm{a^+} \bm{a} + (1 + \bm{a^+} \bm{a})^2 = \bm{ \hat{n} }^2 + 3 \bm{ \hat{n} } + 2
+E_0 = \frac{1}{2} \hbar \omega + 3 \lambda \left( \frac{\hbar}{2m\omega} \right)^2
+\end{equation}
+
+\begin{equation}
+E_1 = \frac{3}{2} \hbar \omega + 15 \lambda \left( \frac{\hbar}{2m\omega} \right)^2
 \end{equation}
 
 \section{Numerical method}
