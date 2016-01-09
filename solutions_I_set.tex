@@ -19,6 +19,159 @@
 
 \section{3D square well}
 
+\subsection{Radial Schroedinger equation}
+Because of the spherical simmetry of the potential, it is a good choice to use spherical coordinates in solving the problem. We recall the expression of the laplacian in spherical coordinates
+
+\begin{equation}
+\label{eq:laplacian_spher}
+\nabla^2 = \frac{1}{r^2} \left( \frac{\partial}{\partial r} r^2 \frac{\partial}{\partial r} + \frac{1}{sin\theta} \frac{\partial}{\partial \theta} sin\theta \frac{\partial}{\partial \theta} + \frac{1}{sin^2\theta} \frac{\partial^2}{\partial \varphi^2} \right)
+\end{equation}
+
+The hamiltonian of the problem is
+
+\begin{equation}
+\label{eq:hamiltonian_spher}
+H = \frac{p^2}{2m} + V(r) = -\frac{\hbar^2 \nabla^2}{2m} + V(r)
+\end{equation}
+
+and the time-independent Schroedinger equation is
+
+\begin{equation}
+\label{eq:schroedinger_ti}
+H\Psi(\bm{r}) = E\Psi(\bm{r})
+\end{equation}
+
+Eq. \eqref{eq:laplacian_spher} and \eqref{eq:hamiltonian_spher} suggest the existence of factorized solutions for \eqref{eq:schroedinger_ti}. Moreover, because of the spherical simmetry of the potential, the hamiltonian of the problem commutes with the angular momentum operators \(L^2\) and \(L_{z}\) whose eigenfunctions are the spherical harmonics \(Y_{l}^m(\theta,\phi)\). The solutions of the problem will then have the following form:
+
+\begin{equation}
+\label{eq:factorized_psi}
+\Psi(\bm{r}) = \varphi(r) Y_{l}^m(\theta,\phi)
+\end{equation}
+
+To solve for the radial component is then necessary to recall the following equations:
+
+\begin{equation}
+\label{eq:p2_decomposed}
+p^2 = p_{r}^2 + \frac{L^2}{r^2}
+\end{equation}
+
+\begin{equation}
+\label{eq:p_radial}
+p_{r} = -i\hbar \left( \frac{\partial}{\partial r} + \frac{1}{r} \right)
+\end{equation}
+
+\begin{equation}
+\label{eq:L2_eigenvalues}
+L^2 Y_{l}^m(\theta, \phi) = \hbar^2 l(l+1) Y_{l}^m(\theta, \phi)
+\end{equation}
+
+Using \eqref{eq:p2_decomposed}, \eqref{eq:factorized_psi} and \eqref{eq:L2_eigenvalues} 
+it is easy to show that the time-independent Schroedinger equation \eqref{eq:schroedinger_ti} becomes
+
+\begin{equation}
+\left[ \frac{1}{2m} \left( p_{r}^2 + \frac{\hbar^2 l(l+1)}{r^2} \right) + V(r) \right] \varphi(r) Y_{l}^m(\theta, \phi) = E \varphi(r) Y_{l}^m(\theta, \phi)
+\end{equation}
+
+Canceling out the spherical harmonics and plugging in eq. \eqref{eq:p_radial} we obtain the radial Schroedinger equation
+
+\begin{equation}
+\label{eq:schroedinger_radial}
+\frac{d^2 \varphi}{dr^2} + \frac{2}{r} \frac{d\varphi}{dr} + \left\{ \frac{2m}{\hbar^2} \left[ E - V(r) \right] - \frac{l \left(l+1 \right)}{r^2} \right\} \varphi = 0
+\end{equation}
+
+As the value \(l\) appears in the equation, the value of the solution will depend on \(l\):
+
+\[ \varphi(r) \Rightarrow \varphi_l(r) \]
+
+\subsection{Solution to the radial Schroedinger equation}
+For \( \left| \bm{r} \right| = r < a \) we have \( V(r) = -V_0 \) and the radial Schroedinger equation \eqref{eq:schroedinger_radial} takes the form
+
+\begin{equation}
+\label{eq:rs_inside_sphere}
+\left[ \frac{d^2}{dr^2} + \frac{2}{r} \frac{d}{dr} - \frac{l \left(l+1 \right)}{r^2} \right] \varphi_{l,1} = - \frac{2m(E+V_0)}{\hbar^2} \varphi_{l,1} = -k_1^2 \varphi_{l,1}
+\end{equation}
+
+\begin{equation}
+k_1 = \sqrt{\frac{2m(E+V_0)}{\hbar^2}}, \quad k_1 > 0 \quad (E<0)
+\end{equation}
+
+Making the change of variable \( r \rightarrow z = k_1r \) we can recognize eq. \eqref{eq:rs_inside_sphere} to be the Bessel spherical differential equation with argument \(z = k_1 r\), for which we choose the following solution
+
+\begin{equation}
+\varphi_{l,1}(k_1r) = A j_l(k_1r) + B \eta_l(k_1r)
+\end{equation}
+
+As \( \eta_l \) is divergent for \( r \rightarrow 0 \), for the solution to be physically acceptable we must have
+
+\begin{equation}
+B = 0 \quad \Rightarrow \quad \varphi_{l,1}(k_1r) = A j_l(k_1r)
+\end{equation}
+
+For \( \left| \bm{r} \right| = r > a \) we have \( V(r) = 0 \) and the radial Schroedinger equation \eqref{eq:schroedinger_radial} takes the form
+
+\begin{equation}
+\label{eq:rs_outside_sphere}
+\left[ \frac{d^2}{dr^2} + \frac{2}{r} \frac{d}{dr} - \frac{l \left(l+1 \right)}{r^2} \right] \varphi_{l,1} = - \frac{2mE}{\hbar^2} \varphi_{l,1} = i^2 k_2^2 \varphi_{l,1} = - k_2^2 \varphi_{l,1}
+\end{equation}
+
+\begin{equation}
+k_2 = \sqrt{\frac{-2mE}{\hbar^2}}, \quad k_2 > 0 \quad (E<0)
+\end{equation}
+
+Making the change of variable \( r \rightarrow z = i k_2 r \) we can recognize eq. \eqref{eq:rs_outside_sphere} to be the Bessel spherical differential equation with argument \(z = i k_2 r\). Given that the argument is purely imaginary and we care about the behaviour for \( r \rightarrow \infty \), the right solution to choose is a linear combination of Hankel functions
+
+\begin{equation}
+\varphi_{l,2}(ik_2r) = C h_l^1(ik_2r) + D h_l^2(ik_2r)
+\end{equation} 
+
+whose asymptotic behaviour for \( r \rightarrow \infty \) is given by
+
+\begin{equation}
+h_l^1(ik_2r) \sim -(-i)^l \frac{e^{-k_2r}}{k_2r} \rightarrow 0
+\end{equation}
+
+\begin{equation}
+\label{eq:h2_asymptotic}
+h_l^2(ik_2r) \sim i^l \frac{e^{k_2r}}{k_2r} \rightarrow \infty
+\end{equation}
+
+Given eq. \eqref{eq:h2_asymptotic}, for the solution to be physically meaningful we must have
+
+\begin{equation}
+D = 0 \quad \Rightarrow \quad \varphi_{l,2}(ik_2r) = C h_l^1(ik_2r)
+\end{equation}
+
+Of course the total wave function must be continuous and with continuous first derivative, thus we impose the following boundary conditions
+
+\begin{equation}
+\varphi_{l,1}(k_1a) = \varphi_{l,2}(ik_2a)
+\end{equation}
+
+\begin{equation}
+\varphi_{l,1}'(k_1a) = \varphi_{l,2}'(ik_2a)
+\end{equation}
+
+Substituting the expressions for \( \varphi_l \) into the boundary conditions we get the following system
+
+\begin{equation}
+  \begin{cases}
+    A j_l(k_1a) & = C h_l^1(ik_2a) \\
+    A k_1 j_l'(k_1a) & = C i k_2 {h_l^1}'(ik_2a)
+  \end{cases}
+\end{equation}
+
+Solving the first equation for \( A \) and substituting into the second, we obtain
+
+\begin{equation}
+C \left( k_1 \frac{h_l^1(ik_2a)}{j_l(k_1a)} j_l' - i k_2 {h_l^1}'(ik_2a) \right) = 0
+\end{equation}
+
+Solutions with \( C = 0 \) are trivial (wave function null everywhere) then to get the allowed values of energy we are interested in solving the following equation
+
+\begin{equation}
+k_1 \frac{j_l'(k_1a)}{j_l(k_1a)} = i k_2 \frac{{h_l^1}'(ik_2a)}{h_l(ik_2a)}
+\end{equation}
+
 \section{Double well potential}
 
 \subsection{Schroedinger equation and boundary conditions}
