@@ -169,8 +169,36 @@ C \left( k_1 \frac{h_l^1(ik_2a)}{j_l(k_1a)} j_l' - i k_2 {h_l^1}'(ik_2a) \right)
 Solutions with \( C = 0 \) are trivial (wave function null everywhere) then to get the allowed values of energy we are interested in solving the following equation
 
 \begin{equation}
+\label{eq:log_derivative}
 k_1 \frac{j_l'(k_1a)}{j_l(k_1a)} = i k_2 \frac{{h_l^1}'(ik_2a)}{h_l(ik_2a)}
 \end{equation}
+
+\subsection{ \( l = 0 \) }
+
+With \( l= 0 \) we have
+
+\begin{equation}
+j_0(z) = \frac{sin(z)}{z}
+\end{equation}
+
+\begin{equation}
+\eta_0(z) = - \frac{cos(z)}{z}
+\end{equation}
+
+\begin{equation}
+j_0'(z) = \frac{cos(z)}{z} -  \frac{sin(z)}{z^2}
+\end{equation}
+
+\begin{equation}
+\eta_0'(z) = \frac{sin(z)}{z} + \frac{cos(z)}{z^2}
+\end{equation}
+
+Then the first member of eq. \eqref{eq:log_derivative} is
+
+\begin{align}
+k_1 \frac{h_0(ik_2r)}{j_0(k_1r)} & = k_1 \frac{j_0(ik_2r)}{j_0(k_1r)} + i k_1 \frac{\eta_0(ik_2r)}{j_0(k_1r)} \nonumber \\
+& =
+\end{align}
 
 \section{Double well potential}
 
