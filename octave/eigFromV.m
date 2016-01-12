@@ -1,8 +1,10 @@
-x0 = -1
-x1 = 1
-n = 100
+d = 0.01
+n = 1000
 
-xs = 1000
+x0 = -(n-1)/2*d
+x1 = (n-1)/2*d
+
+xs = 100
 
 res = ones(xs,2);
 
@@ -12,12 +14,10 @@ for i = 1:xs
 
   v = lambda * x.^4;
 
-  d = (x1-x0)/n;
-
   H = -1.0/(2*d^2)*(diag(-2*ones(n,1)) + diag(ones(n-1,1),1) + diag(ones(n-1,1),-1)) + diag(v);
 
   res(i,1) = lambda;
-  res(i,2) = eig(H)(1);
+  res(i,2) = lambda**(1.0/3)*eig(H)(1);
 end
 
 res
