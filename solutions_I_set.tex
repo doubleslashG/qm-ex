@@ -196,9 +196,26 @@ j_0'(z) = \frac{cos(z)}{z} -  \frac{sin(z)}{z^2}
 Then the first member of eq. \eqref{eq:log_derivative} is
 
 \begin{align}
-k_1 \frac{h_0(ik_2r)}{j_0(k_1r)} & = k_1 \frac{j_0(ik_2r)}{j_0(k_1r)} + i k_1 \frac{\eta_0(ik_2r)}{j_0(k_1r)} \nonumber \\
-& =
+k_1 \frac{j_0'(k_1a)}{j_0(k_1a)} & = k_1 \left( \frac{cos(k_1a)}{k_1a} - \frac{sin(k_1a)}{(k_1a)^2} \right) \frac{k_1a}{sin(k_1a)} \nonumber \\
+& = k_1 \left( \frac{cos(k_1a)}{sin(k_1a)} - \frac{1}{k_1a} \right) \nonumber \\
+& = k_1 cot(k_1a) - \frac{1}{a}
 \end{align}
+
+while the second is
+
+\begin{align}
+ik_2a \frac{h_0'(ik_2a)}{h_0(ik_2a)} & = ik_2 \frac{j_0'(ik_2a) + i \eta_0'(ik_2a)}{j_0(ik_2a) + i\eta_0(ik_2a)} \nonumber \\
+& = ik_2 \frac{\frac{cos(ik_2a)}{ik_2a} - \frac{sin(ik_2a)}{(ik_2a)^2} + i \left( \frac{sin(ik_2a)}{ik_2a} + \frac{cos(ik_2a)}{(ik_2a)^2} \right)}{\frac{sin(ik_2a)}{ik_2a} -i \frac{cos(ik_2a)}{ik_2a}} \nonumber \\
+& = \frac{1}{a} \frac{ik_2a \, cos(ik_2a) - sin(ik_2a) - k_2a \, sin(ik_2a) + i \, cos(ik_2a)}{sin(ik_2a) - i \, cos(ik_2a)} \nonumber \\
+& = \frac{1}{a} \frac{(1+k_2a) \left[ i \, cos(ik_2a) - sin(ik_2a) \right]}{-i \left[ cos(ik_2a) + i \, sin(ik_2a) \right]} \nonumber \\
+& = \frac{1}{a} i^2 (1 + k_2a) = -k_2 - \frac{1}{a}
+\end{align}
+
+Finally, eq. \eqref{eq:log_derivative} becomes
+
+\begin{equation}
+k_1a \, cot(k_1a) = -k_2a
+\end{equation}
 
 \section{Double well potential}
 
