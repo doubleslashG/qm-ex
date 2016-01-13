@@ -217,6 +217,50 @@ Finally, eq. \eqref{eq:log_derivative} becomes
 k_1a \, cot(k_1a) = -k_2a
 \end{equation}
 
+\subsection{\(l=1\)}
+
+For \( l = 1 \) we have
+
+\begin{equation}
+j_1(z) = \frac{sin(z)}{z^2} - \frac{cos(z)}{z}
+\end{equation}
+
+\begin{equation}
+\eta_1(z) = - \frac{cos(z)}{z^2} - \frac{sin(z)}{z}
+\end{equation}
+
+\begin{equation}
+j_1'(z) = \left( \frac{1}{z} - \frac{2}{z^3} \right) sin(z) + 2 \frac{cos(z)}{z^2}
+\end{equation}
+
+\begin{equation}
+\eta_0'(z) = \left( \frac{2}{z^3} - \frac{1}{z} \right) cos(z) + 2 \frac{sin(z)}{z^2}
+\end{equation}
+
+The first member of eq. \eqref{eq:log_derivative} results
+
+\begin{align}
+k_1 \frac{j_1'(k_1a)}{j_1(k_1a)} & = k_1 \frac{ \left( \frac{1}{k_1a} - \frac{2}{(k_1a)^3} \right) sin(k_1a) + 2 \frac{cos(k_1a)}{(k_1a)^2}}{\frac{sin(k_1a)}{(k_1a)^2} - \frac{cos(k_1a)}{k_1a}} \nonumber \\
+& = k_1 \left( \frac{(k_1a)^2-2}{(k_1a)^3} sin(k_1a) + 2 \frac{cos(k_1a)}{(k_1a)^2} \right) \frac{(k_1a)^2}{sin(k_1a)-k_1a \, cos(k_1a)} \nonumber \\
+& = \frac{1}{a} \frac{\left[ (k_1a)^2 - 2 \right] sin(k_1a) + 2k_1a \, cos(k_1a)}{sin(k_1a) - k_1a \, cos(k_1a)}
+\end{align}
+
+and the second member is
+
+\begin{align}
+& ik_2 \frac{h_1'(ik_2a)}{h_1(ik_2a)} = ik_2 \frac{j_1'(ik_2a) + i \eta_1'(ik_2a)}{j_1(ik_2a) + i \eta_1(ik_2a)} \nonumber \\
+& = ik_2 \frac{\left( \frac{1}{ik_2a} - \frac{2}{(ik_2a)^3} \right) sin(ik_2a) + 2 \frac{cos(ik_2a)}{(ik_2a)^2} + i \left( \frac{2}{(ik_2a)^3} - \frac{1}{ik_2a} \right) cos(ik_2a) + 2i \frac{sin(ik_2a)}{(ik_2a)^2}}{\frac{sin(ik_2a)}{(ik_2a)^2} - \frac{cos(ik_2a)}{ik_2a} - i \frac{cos(ik_2a)}{(ik_2a)^2} - i \frac{sin(ik_2a)}{ik_2a}} \nonumber \\
+& = ik_2(ik_2a)^2 \frac{\frac{(ik_2a)^2-2}{(ik_2a)^3}sin(ik_2a) + 2 \frac{cos(ik_2a)}{(ik_2a)^2}+i \frac{2-(ik_2a)^2}{(ik_2a)^3}cos(ik_2a)+2i \frac{sin(ik_2a)}{(ik_2a)^2}}{sin(ik_2a) - ik_2a \, cos(ik_2a) -i \, cos(ik_2a) + k_2a \, sin(ik_2a)} \nonumber \\
+& = \frac{sin(ik_2a) \left[(ik_2a)^2 - 2 - 2k_2a \right] - i \, cos(ik_2a) \left[ (ik_2a)^2 -2 - 2k_a \right]}{(1+k_2a) \left[ sin(ik_2a) - i \, cos(ik_2a) \right]} \nonumber \\
+& = \frac{1}{a} \frac{(k_2a)^2 + 2 + 2k_2a}{1+k_2a}
+\end{align}
+
+The equation then looks
+
+\begin{equation}
+\frac{\left[ (k_1a)^2 - 2 \right] sin(k_1a) + 2k_1a \, cos(k_1a)}{sin(k_1a) - k_1a \, cos(k_1a)} = \frac{(k_2a)^2 + 2 + 2k_2a}{1+k_2a}
+\end{equation}
+
 \section{Double well potential}
 
 \subsection{Schroedinger equation and boundary conditions}
