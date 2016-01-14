@@ -183,4 +183,49 @@ E_1 = \frac{3}{2} \hbar \omega + 15 \lambda \left( \frac{\hbar}{2m\omega} \right
 
 \section{Numerical method}
 
+\subsection{Dimensionless Schroedinger equation}
+To make a significative comparison between results obtained by numerical solution and results obtained with other methods, it is necessary to numerically solve the dimensionless time-independent Schroedinger equation.
+
+The hamiltonian of the problem is
+
+\begin{equation}
+H = \frac{p^2}{2m} + \lambda x^4
+\end{equation}
+
+and the explicit time-independent Schroedinger equation is
+
+\begin{equation}
+-\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \psi(x) + \lambda x^4 \psi(x) = E \psi(x)
+\end{equation}
+
+By introducing the dimensionless variable \( y = \frac{x}{u} \) (where \( u \) is a constant to be determined) the operator of differentiation becomes
+
+\begin{equation}
+\frac{d}{dx} \psi \left( \frac{x}{u} \right) = \frac{1}{u} \frac{d}{dy} \psi(y) \quad \Rightarrow \quad \frac{d}{dx} = \frac{1}{u} \frac{d}{dy}
+\end{equation}
+
+and the Schroedinger equation becomes
+
+\begin{equation}
+-\frac{\hbar^2}{2m} \frac{1}{u^2} \frac{d^2}{dy^2} \psi(y) + \lambda u^4 y^4 \psi(y) = E \psi(y)
+\end{equation}
+
+With a little manipulation we obtain
+
+\begin{equation}
+\left( -\frac{1}{2}\frac{d^2}{dy^2} + \frac{m\lambda}{\hbar^2} u^6 y^4 \right) \psi(y) = \frac{mu^2}{\hbar^2} E \psi(y)
+\end{equation}
+
+For the left hand side of last equation to be completely dimensionless we must have
+
+\begin{equation}
+\frac{m\lambda}{\hbar^2} u^6 = 1 \quad \Rightarrow \quad u = \left( \frac{\hbar^2}{m\lambda} \right)^{\frac{1}{6}}
+\end{equation}
+
+The dimensionless equation to solve is then
+
+\begin{equation}
+\left( -\frac{1}{2}\frac{d^2}{dy^2} + y^4 \right) \psi(y) = \left(\frac{m}{\hbar^4 \lambda} \right) E \psi(y) = \varepsilon \psi(y)
+\end{equation}
+
 \end{document}
