@@ -1,25 +1,21 @@
+% step size
 d = 0.01
-n = 1000
 
-x0 = -(n-1)/2*d
-x1 = (n-1)/2*d
+% number of steps
+n = 5000
 
-xs = 100
+% extremes
+y0 = -(n-1)/2*d
+y1 = (n-1)/2*d
 
-res = ones(xs,2);
+% coordinates
+y = linspace(y0, y1, n);
 
-for i = 1:xs
-  lambda = i*1.0/xs;
-  x = linspace(x0, x1, n);
+% potential
+v = y.^4;
 
-  v = lambda * x.^4;
+% hamiltonian
+H = -1.0/(2*d^2)*(diag(-2*ones(n,1)) + diag(ones(n-1,1),1) + diag(ones(n-1,1),-1)) + diag(v);
 
-  H = -1.0/(2*d^2)*(diag(-2*ones(n,1)) + diag(ones(n-1,1),1) + diag(ones(n-1,1),-1)) + diag(v);
-
-  res(i,1) = lambda;
-  res(i,2) = lambda**(1.0/3)*eig(H)(1);
-end
-
-res
-
-save eigenvalues.dat res
+% first eigenvalue of H
+eig(H)(1)
