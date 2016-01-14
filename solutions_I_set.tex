@@ -261,6 +261,67 @@ The equation then looks
 \frac{\left[ (k_1a)^2 - 2 \right] sin(k_1a) + 2k_1a \, cos(k_1a)}{sin(k_1a) - k_1a \, cos(k_1a)} = \frac{(k_2a)^2 + 2 + 2k_2a}{1+k_2a}
 \end{equation}
 
+\subsection{Emergence of bound states}
+In this section we will derive, for arbitrary \( l \), the minimum value of \( V_0a^2 \) for which the first bound state emerges. In such situation the energy approches 0 and we have
+
+\begin{equation}
+E \rightarrow 0
+\end{equation}
+
+\begin{equation}
+k_1 \rightarrow \frac{\sqrt{2mV_0}}{\hbar^2}
+\end{equation}
+
+\begin{equation}
+k_2 \rightarrow 0
+\end{equation}
+
+Recalling the following relations for the spherical Bessel functions
+
+\begin{equation}
+\label{eq:bessel_derivative}
+\varphi_l'(z) = \frac{l}{z} \varphi_l(z) - \varphi_{l+1}(z) = \varphi_{l-1}(z) - \frac{l+1}{z} \varphi_l(z)
+\end{equation}
+
+\begin{equation}
+j_l(z) \sim \frac{z^l}{(2l+1)!!}, \quad z \rightarrow 0
+\end{equation}
+
+\begin{equation}
+\eta_l(z) \sim -\frac{(2l-1)!!}{z^{l+1}}, \quad z \rightarrow 0
+\end{equation}
+
+and making the change of variable \( z = ik_2r \) we can simplify the second member of eq. \eqref{eq:log_derivative} to obtain (as \(z \rightarrow 0 \))
+
+\begin{align}
+\frac{z}{a} \frac{h_l'(z)}{h_l(z)} & = \frac{z}{a} \left(\frac{l}{z} - \frac{h_{l+1}(z)}{h_l(z)} \right) \nonumber \\
+& = \frac{l}{a} - \frac{z}{a} \frac{h_{l+1}(z)}{h_l(z)} \nonumber \\
+& = \frac{l}{a} - \frac{z}{a} \frac{j_{l+1}(z) + i\eta_{l+1}(z)}{j_l(z)+i\eta_l(z)} \nonumber \\
+& = \frac{l}{a} - \frac{z}{a} \frac{z^{2l+3}-i(2l+2)!!(2l+1)!!}{(2l+2)!!z^{l+2}} \frac{(2l+1)!!z^{l+1}}{z^{2l+1}-i(2l+1)!!(2l-1)!!} \nonumber \\
+& = \frac{1}{a} (2l+1)
+\end{align}
+
+Eq. \eqref{eq:log_derivative} then becomes
+
+\begin{equation}
+\label{eq:asymptotic_log_derivative}
+\frac{j_l'(k_1a)}{j_l(k_1a)} = - \frac{l+1}{k_1a} \quad \Rightarrow \quad j_l'(k_1a) = - \frac{l+1}{k_1a} j_l(k_1a)
+\end{equation}
+
+and comparing \eqref{eq:asymptotic_log_derivative} with \eqref{eq:bessel_derivative} we must have
+
+\begin{equation}
+j_{l-1}(k_1a) = 0
+\end{equation}
+
+Naming by \( z_{1,l} \) the first zero of the \( l^{th} \) Bessel function, we can easily obtain the minimum value of \(V_0a^2 \) for which a bound state emerges
+
+\begin{equation}
+k_1a = \frac{\sqrt{2mV_0}}{\hbar^2}a = z_{1,l} \quad \Rightarrow \quad V_0a^2 = \frac{\hbar^2}{2m}z_{1,l}^2
+\end{equation}
+
+As \(z_{1,l} \) is increasing with \(l\), we can conclude that \(V_0a^2\) is increasing monotonically with \(l\).
+
 \section{Double well potential}
 
 \subsection{Schroedinger equation and boundary conditions}
