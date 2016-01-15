@@ -6,6 +6,9 @@
 
 \usepackage{physics}
 
+\usepackage{listings}
+\usepackage{color}
+
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \graphicspath{{img/}}
@@ -246,20 +249,20 @@ f''(x) & \simeq \frac{f'\left(x+\frac{d}{2}\right) - f'\left(x-\frac{d}{2}\right
 \end{align*}
 
 \begin{equation}
-\left. \frac{d^2\psi}{dy^2} \right\vert_n = \psi_{n+1} - 2\psi_n + \psi_{n-1}
+\left. \frac{d^2\psi}{dy^2} \right\vert_n = \frac{\psi_{n+1} - 2\psi_n + \psi_{n-1}}{d^2}
 \end{equation}
 
 and the discretized Schroedinger equation is
 
 \begin{equation}
 \label{eq:discrete_se}
-\frac{1}{2} \left( \psi_{n+1} - 2\psi_n + \psi_{n-1} \right) + V_n \psi_n = \varepsilon \psi_n, \quad V_n = y_n^4
+-\frac{1}{2d^2} \left( \psi_{n+1} - 2\psi_n + \psi_{n-1} \right) + V_n \psi_n = \varepsilon \psi_n, \quad V_n = y_n^4
 \end{equation}
 
 Eq. \eqref{eq:discrete_se} defines a system of equations. Setting the boundary conditions \( \psi_{-1} = \psi_{N+1} = 0 \) and introducing the vertical vector \( \psi = (\psi_0, \psi_1, \dots, \psi_N) \) the system can be expressed in matrix form as
 
 \begin{equation}
--\frac{1}{2}
+-\frac{1}{2d^2}
   \begin{pmatrix}
     -2 & 1 &&& \\
     1 & -2 & 1 && \\
@@ -283,7 +286,7 @@ The boundary conditions have been set to obtain a square matrix which is easily 
 The hamiltonian in matrix form is the following
 
 \begin{equation}
-H = -\frac{1}{2}
+H = -\frac{1}{2d^2}
   \begin{pmatrix}
     -2+V_0 & 1 &&& \\
     1 & -2+V_1 & 1 && \\
@@ -297,6 +300,16 @@ And the eigenvalues problem is
 
 \begin{equation}
 H\psi = \varepsilon \psi
+\end{equation}
+
+Using Octave, the following code defines the problem and solves for the eigenvalues
+
+\lstinputlisting[language=Octave]{octave/eigFromV.m}
+
+The obtained result is
+
+\begin{equation}
+\varepsilon_0 = 0.66798
 \end{equation}
 
 \end{document}
