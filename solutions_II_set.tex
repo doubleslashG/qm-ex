@@ -225,7 +225,11 @@ For the left hand side of last equation to be completely dimensionless we must h
 The dimensionless equation to solve is then
 
 \begin{equation}
-\left( -\frac{1}{2}\frac{d^2}{dy^2} + y^4 \right) \psi(y) = \left(\frac{m}{\hbar^4 \lambda} \right) E \psi(y) = \varepsilon \psi(y)
+\left( -\frac{1}{2}\frac{d^2}{dy^2} + y^4 \right) \psi(y) = \left(\frac{m}{\hbar^4 \lambda} \right)^{\frac{1}{3}} E \psi(y) = \varepsilon \psi(y)
 \end{equation}
+
+\subsection{Numerical solution}
+
+To solve the problem numerically, it is necessary to discretize the variable \( y \) and express the hamiltonian of the problem in matrix form. Then diagonalizing \( H \) the eigenvalues are easily obtained.
 
 \end{document}
