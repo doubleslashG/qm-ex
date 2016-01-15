@@ -232,4 +232,71 @@ The dimensionless equation to solve is then
 
 To solve the problem numerically, it is necessary to discretize the variable \( y \) and express the hamiltonian of the problem in matrix form. Then diagonalizing \( H \) the eigenvalues are easily obtained.
 
+Using \( N \) steps spaced by a distance \( d \), the following notation is introduced
+
+\[ \psi(y_n) = \psi_n, \qquad \psi(y_n + d) = \psi_{n+1} \]
+
+The one-dimensional laplacian is then easily discretized as follows
+
+\begin{align*}
+f'(x) & \simeq \frac{f\left(x+\frac{d}{2}\right) - f\left(x-\frac{d}{2}\right)}{d} \\ \\
+f''(x) & \simeq \frac{f'\left(x+\frac{d}{2}\right) - f'\left(x-\frac{d}{2}\right)}{d} \\
+& \simeq \frac{f\left(x+d\right) - f(x) - f(x) + f\left(x-d\right)}{d^2} \\
+& = \frac{f(x+d) - 2f(x) + f(x-d)}{d^2}
+\end{align*}
+
+\begin{equation}
+\left. \frac{d^2\psi}{dy^2} \right\vert_n = \psi_{n+1} - 2\psi_n + \psi_{n-1}
+\end{equation}
+
+and the discretized Schroedinger equation is
+
+\begin{equation}
+\label{eq:discrete_se}
+\frac{1}{2} \left( \psi_{n+1} - 2\psi_n + \psi_{n-1} \right) + V_n \psi_n = \varepsilon \psi_n, \quad V_n = y_n^4
+\end{equation}
+
+Eq. \eqref{eq:discrete_se} defines a system of equations. Setting the boundary conditions \( \psi_{-1} = \psi_{N+1} = 0 \) and introducing the vertical vector \( \psi = (\psi_0, \psi_1, \dots, \psi_N) \) the system can be expressed in matrix form as
+
+\begin{equation}
+-\frac{1}{2}
+  \begin{pmatrix}
+    -2 & 1 &&& \\
+    1 & -2 & 1 && \\
+    & \ddots & \ddots & \ddots & \\
+    && 1 & -2 & 1 \\
+    &&& 1 & -2
+  \end{pmatrix}
+\psi +
+  \begin{pmatrix}
+    V_0 \\
+    & V_1 \\
+    && \ddots \\
+    &&& V_{N-1} \\
+    &&&& V_N
+  \end{pmatrix}
+\psi = \varepsilon \psi
+\end{equation}
+
+The boundary conditions have been set to obtain a square matrix which is easily diagonalizable and they force us to solve the problem in a region large enough for the eigenstates to be considered null at the boundaries. As the potential is rapidly increasing for \( |y| > 1 \) this is not a critical issue in our problem.
+
+The hamiltonian in matrix form is the following
+
+\begin{equation}
+H = -\frac{1}{2}
+  \begin{pmatrix}
+    -2+V_0 & 1 &&& \\
+    1 & -2+V_1 & 1 && \\
+    & \ddots & \ddots & \ddots & \\
+    && 1 & -2-V_{N-1} & 1 \\
+    &&& 1 & -2+V_N
+  \end{pmatrix}
+\end{equation}
+
+And the eigenvalues problem is
+
+\begin{equation}
+H\psi = \varepsilon \psi
+\end{equation}
+
 \end{document}
