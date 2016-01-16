@@ -53,6 +53,7 @@ E_n^0 = \left(n + \frac{1}{2} \right) \hbar \omega
 Recalling the expression of \( \bm{x} \) in terms of the raising and lowering operators \( \bm{a^+} \) and \( \bm{a} \)
 
 \begin{equation}
+\label{eq:x_def}
 \bm{x} = \sqrt{ \frac{\hbar}{2m \omega}} \left( \bm{a^+} + \bm{a} \right)
 \end{equation}
 
@@ -162,6 +163,7 @@ Eq. \eqref{eq:a_sandwich} then becomes
 and the first order correction to the energy \eqref{eq:energy_correction} reads
 
 \begin{align}
+\label{eq:x4correction}
 E_n^1 & = \bra{n^0} H_1 \ket{n^0} \nonumber \\
 & = \lambda \left( \frac{\hbar}{2m \omega} \right)^2 \bra{n^0} \left( \bm{a^+} + \bm{a} \right)^4 \ket{n^0} \nonumber \\
 & = 3 \lambda \left( \frac{\hbar}{2m \omega} \right)^2 (2n^2 + 2n +1)
@@ -310,6 +312,77 @@ The obtained result is
 
 \begin{equation}
 \varepsilon_0 = 0.66798
+\end{equation}
+
+\subsection{Solution by perturbation theory}
+The hamiltonian of the problem is that of a free particle plus a perturbative term \( H_1 = \lambda x^4 \). Directly applying perturbation theory with such perturbative term gives a first order correction to the energy which is divergent. In order to get a valid correction term, we can express our hamiltonian in the equivalent form
+
+\begin{equation}
+H = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2 + \lambda x^4 - \frac{1}{2}m\omega^2 x^2
+\end{equation}
+
+where the unperturbed part is the hamiltonian of the harmonic oscillator
+
+\begin{equation}
+H_0 = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2
+\end{equation}
+
+and the perturbative part is
+
+\begin{equation}
+H_1 = \lambda x^4 - \frac{1}{2}m\omega^2 x^2
+\end{equation}
+
+For the problem to be well defined we must be able to retrieve the original unperturbed hamiltonian (that of the free particle) for \( \lambda \rightarrow 0 \). Then we must have \( \omega = \omega(\lambda) \) such that \( \omega(\lambda) \rightarrow 0 \) for \( \lambda \rightarrow 0 \) (the explicit expression for \( \lambda \) will be derived later).
+
+To solve the problem we proceed as in exercise 3. The first order correction term for the energy is given by
+
+\begin{equation}
+\bra{n^0} H_1 \ket{n^0} = \lambda \bra{n^0}\bm{x}^4 \ket{n^0} - \frac{1}{2}m\omega^2 \bra{n^0}\bm{x}^2\ket{n^0}
+\end{equation}
+
+where the first part is the same as in exercise 3 (eq. \eqref{eq:x4correction})
+
+\begin{equation}
+\lambda \bra{n^0}\bm{x}^4 \ket{n^0} = 3 \lambda \left( \frac{\hbar}{2m \omega} \right)^2 (2n^2 + 2n +1)
+\end{equation}
+
+while for the second term we have (recalling eq. \eqref{eq:x_def} and discarding non-diagonal terms)
+
+\begin{align}
+\frac{1}{2} m \omega^2 \bra{n^0} \bm{x}^2 \ket{n^0} & = \frac{\hbar\omega}{4} \bra{n^0} \left( \bm{a^+} + \bm{a} \right)^2 \ket{n^0} \nonumber \\
+& = \frac{\hbar\omega}{4} \bra{n^0} \left( {\bm{a^+}}^2 + \bm{a^+}\bm{a} + \bm{a}\bm{{a}^+} + \bm{a}^2 \right) \ket{n^0} \nonumber \\
+& = \frac{\hbar\omega}{4} \bra{n^0} \left(\bm{a^+}\bm{a} + \bm{a}\bm{{a}^+}\right) \ket{n^0} \nonumber \\
+& = \frac{\hbar\omega}{4} \bra{n^0} \left(2\bm{\hat{n}} + 1\right) \ket{n^0} \nonumber \\
+& = \frac{\hbar\omega}{4} \left(2n + 1\right) \braket{n^0}{n^0} \nonumber \\
+& = \frac{\hbar\omega}{4} \left(2n + 1\right)
+\end{align}
+
+The energy of the ground state up to first order is then given by
+
+\begin{align}
+\label{eq:energy_corrected}
+E_0 & = E_0^0 + E_0^{1,quartic} - E_0^{1,quadratic} \nonumber \\
+& = \frac{1}{2} \hbar \omega + \frac{3}{4} \lambda \left(\frac{\hbar}{m\omega} \right)^2 - \frac{1}{4} \hbar \omega \nonumber \\
+& = \frac{1}{4} \hbar \omega + \frac{3}{4} \lambda \left(\frac{\hbar}{m\omega} \right)^2
+\end{align}
+
+The use of the hamiltonian of the harmonic oscillator to solve the problem suggests to express the result in units of \( \hbar \omega \). We can then derive an explicit expression for \( \omega \) enforcing the following condition
+
+\begin{equation}
+\hbar \omega = \lambda \left( \frac{\hbar}{n \omega} \right)^2 \quad \Rightarrow \quad \omega = \left( \frac{\hbar \lambda}{m^2} \right)^{\frac{1}{3}}
+\end{equation}
+
+Substituting the expression for \( \omega \) into eq. \eqref{eq:energy_corrected} we obtain
+
+\begin{equation}
+E_0 = 1 \left( \frac{\hbar^4 \lambda}{m^2} \right)^{\frac{1}{3}}
+\end{equation}
+
+and the dimensionless value of energy is
+
+\begin{equation}
+\varepsilon_{0,pert} = 1
 \end{equation}
 
 \end{document}
