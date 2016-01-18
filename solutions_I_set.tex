@@ -150,7 +150,7 @@ Eq. \eqref{eq:laplacian_spher} and \eqref{eq:hamiltonian_spher} suggest the exis
 \Psi(\bm{r}) = \varphi(r) Y_{l}^m(\theta,\phi)
 \end{equation}
 
-To solve for the radial component is then necessary to recall the following equations:
+To solve for the radial component it is then necessary to recall the following equations:
 
 \begin{equation}
 \label{eq:p2_decomposed}
@@ -213,7 +213,7 @@ For \( \left| \bm{r} \right| = r > a \) we have \( V(r) = 0 \) and the radial Sc
 
 \begin{equation}
 \label{eq:rs_outside_sphere}
-\left[ \frac{d^2}{dr^2} + \frac{2}{r} \frac{d}{dr} - \frac{l \left(l+1 \right)}{r^2} \right] \varphi_{l,1} = - \frac{2mE}{\hbar^2} \varphi_{l,1} = i^2 k_2^2 \varphi_{l,1} = - k_2^2 \varphi_{l,1}
+\left[ \frac{d^2}{dr^2} + \frac{2}{r} \frac{d}{dr} - \frac{l \left(l+1 \right)}{r^2} \right] \varphi_{l,1} = - \frac{2mE}{\hbar^2} \varphi_{l,1} = - i^2 k_2^2 \varphi_{l,1} = k_2^2 \varphi_{l,1}
 \end{equation}
 
 \begin{equation}
@@ -298,9 +298,131 @@ j_0'(z) = \frac{cos(z)}{z} -  \frac{sin(z)}{z^2}
 Then the first member of eq. \eqref{eq:log_derivative} is
 
 \begin{align}
-k_1 \frac{h_0(ik_2r)}{j_0(k_1r)} & = k_1 \frac{j_0(ik_2r)}{j_0(k_1r)} + i k_1 \frac{\eta_0(ik_2r)}{j_0(k_1r)} \nonumber \\
-& =
+k_1 \frac{j_0'(k_1a)}{j_0(k_1a)} & = k_1 \left( \frac{cos(k_1a)}{k_1a} - \frac{sin(k_1a)}{(k_1a)^2} \right) \frac{k_1a}{sin(k_1a)} \nonumber \\
+& = k_1 \left( \frac{cos(k_1a)}{sin(k_1a)} - \frac{1}{k_1a} \right) \nonumber \\
+& = k_1 cot(k_1a) - \frac{1}{a}
 \end{align}
+
+while the second is
+
+\begin{align}
+ik_2a \frac{h_0'(ik_2a)}{h_0(ik_2a)} & = ik_2 \frac{j_0'(ik_2a) + i \eta_0'(ik_2a)}{j_0(ik_2a) + i\eta_0(ik_2a)} \nonumber \\
+& = ik_2 \frac{\frac{cos(ik_2a)}{ik_2a} - \frac{sin(ik_2a)}{(ik_2a)^2} + i \left( \frac{sin(ik_2a)}{ik_2a} + \frac{cos(ik_2a)}{(ik_2a)^2} \right)}{\frac{sin(ik_2a)}{ik_2a} -i \frac{cos(ik_2a)}{ik_2a}} \nonumber \\
+& = \frac{1}{a} \frac{ik_2a \, cos(ik_2a) - sin(ik_2a) - k_2a \, sin(ik_2a) + i \, cos(ik_2a)}{sin(ik_2a) - i \, cos(ik_2a)} \nonumber \\
+& = \frac{1}{a} \frac{(1+k_2a) \left[ i \, cos(ik_2a) - sin(ik_2a) \right]}{-i \left[ cos(ik_2a) + i \, sin(ik_2a) \right]} \nonumber \\
+& = \frac{1}{a} i^2 (1 + k_2a) = -k_2 - \frac{1}{a}
+\end{align}
+
+Finally, eq. \eqref{eq:log_derivative} becomes
+
+\begin{equation}
+k_1a \, cot(k_1a) = -k_2a
+\end{equation}
+
+\subsection{\(l=1\)}
+
+For \( l = 1 \) we have
+
+\begin{equation}
+j_1(z) = \frac{sin(z)}{z^2} - \frac{cos(z)}{z}
+\end{equation}
+
+\begin{equation}
+\eta_1(z) = - \frac{cos(z)}{z^2} - \frac{sin(z)}{z}
+\end{equation}
+
+\begin{equation}
+j_1'(z) = \left( \frac{1}{z} - \frac{2}{z^3} \right) sin(z) + 2 \frac{cos(z)}{z^2}
+\end{equation}
+
+\begin{equation}
+\eta_0'(z) = \left( \frac{2}{z^3} - \frac{1}{z} \right) cos(z) + 2 \frac{sin(z)}{z^2}
+\end{equation}
+
+The first member of eq. \eqref{eq:log_derivative} results
+
+\begin{align}
+k_1 \frac{j_1'(k_1a)}{j_1(k_1a)} & = k_1 \frac{ \left( \frac{1}{k_1a} - \frac{2}{(k_1a)^3} \right) sin(k_1a) + 2 \frac{cos(k_1a)}{(k_1a)^2}}{\frac{sin(k_1a)}{(k_1a)^2} - \frac{cos(k_1a)}{k_1a}} \nonumber \\
+& = k_1 \left( \frac{(k_1a)^2-2}{(k_1a)^3} sin(k_1a) + 2 \frac{cos(k_1a)}{(k_1a)^2} \right) \frac{(k_1a)^2}{sin(k_1a)-k_1a \, cos(k_1a)} \nonumber \\
+& = \frac{1}{a} \frac{\left[ (k_1a)^2 - 2 \right] sin(k_1a) + 2k_1a \, cos(k_1a)}{sin(k_1a) - k_1a \, cos(k_1a)}
+\end{align}
+
+and the second member is
+
+\begin{align}
+& ik_2 \frac{h_1'(ik_2a)}{h_1(ik_2a)} = ik_2 \frac{j_1'(ik_2a) + i \eta_1'(ik_2a)}{j_1(ik_2a) + i \eta_1(ik_2a)} \nonumber \\
+& = ik_2 \frac{\left( \frac{1}{ik_2a} - \frac{2}{(ik_2a)^3} \right) sin(ik_2a) + 2 \frac{cos(ik_2a)}{(ik_2a)^2} + i \left( \frac{2}{(ik_2a)^3} - \frac{1}{ik_2a} \right) cos(ik_2a) + 2i \frac{sin(ik_2a)}{(ik_2a)^2}}{\frac{sin(ik_2a)}{(ik_2a)^2} - \frac{cos(ik_2a)}{ik_2a} - i \frac{cos(ik_2a)}{(ik_2a)^2} - i \frac{sin(ik_2a)}{ik_2a}} \nonumber \\
+& = ik_2(ik_2a)^2 \frac{\frac{(ik_2a)^2-2}{(ik_2a)^3}sin(ik_2a) + 2 \frac{cos(ik_2a)}{(ik_2a)^2}+i \frac{2-(ik_2a)^2}{(ik_2a)^3}cos(ik_2a)+2i \frac{sin(ik_2a)}{(ik_2a)^2}}{sin(ik_2a) - ik_2a \, cos(ik_2a) -i \, cos(ik_2a) + k_2a \, sin(ik_2a)} \nonumber \\
+& = \frac{sin(ik_2a) \left[(ik_2a)^2 - 2 - 2k_2a \right] - i \, cos(ik_2a) \left[ (ik_2a)^2 -2 - 2k_a \right]}{(1+k_2a) \left[ sin(ik_2a) - i \, cos(ik_2a) \right]} \nonumber \\
+& = \frac{1}{a} \frac{(k_2a)^2 + 2 + 2k_2a}{1+k_2a}
+\end{align}
+
+The equation then looks
+
+\begin{equation}
+\frac{\left[ (k_1a)^2 - 2 \right] sin(k_1a) + 2k_1a \, cos(k_1a)}{sin(k_1a) - k_1a \, cos(k_1a)} = \frac{(k_2a)^2 + 2 + 2k_2a}{1+k_2a}
+\end{equation}
+
+\subsection{Emergence of bound states}
+In this section we will derive, for arbitrary \( l \), the minimum value of \( V_0a^2 \) for which the first bound state emerges. In such situation the energy approches 0 and we have
+
+\begin{equation}
+E \rightarrow 0
+\end{equation}
+
+\begin{equation}
+k_1 \rightarrow \frac{\sqrt{2mV_0}}{\hbar^2}
+\end{equation}
+
+\begin{equation}
+k_2 \rightarrow 0
+\end{equation}
+
+Recalling the following relations for the spherical Bessel functions
+
+\begin{equation}
+\label{eq:bessel_derivative}
+\varphi_l'(z) = \frac{l}{z} \varphi_l(z) - \varphi_{l+1}(z) = \varphi_{l-1}(z) - \frac{l+1}{z} \varphi_l(z)
+\end{equation}
+
+\begin{equation}
+j_l(z) \sim \frac{z^l}{(2l+1)!!}, \quad z \rightarrow 0
+\end{equation}
+
+\begin{equation}
+\eta_l(z) \sim -\frac{(2l-1)!!}{z^{l+1}}, \quad z \rightarrow 0
+\end{equation}
+
+and making the change of variable \( z = ik_2r \) we can simplify the second member of eq. \eqref{eq:log_derivative} to obtain (as \(z \rightarrow 0 \))
+
+\begin{align}
+\frac{z}{a} \frac{h_l'(z)}{h_l(z)} & = \frac{z}{a} \left(\frac{l}{z} - \frac{h_{l+1}(z)}{h_l(z)} \right) \nonumber \\
+& = \frac{l}{a} - \frac{z}{a} \frac{h_{l+1}(z)}{h_l(z)} \nonumber \\
+& = \frac{l}{a} - \frac{z}{a} \frac{j_{l+1}(z) + i\eta_{l+1}(z)}{j_l(z)+i\eta_l(z)} \nonumber \\
+& = \frac{l}{a} - \frac{z}{a} \frac{z^{2l+3}-i(2l+2)!!(2l+1)!!}{(2l+2)!!z^{l+2}} \frac{(2l+1)!!z^{l+1}}{z^{2l+1}-i(2l+1)!!(2l-1)!!} \nonumber \\
+& = \frac{1}{a} (2l+1)
+\end{align}
+
+Eq. \eqref{eq:log_derivative} then becomes
+
+\begin{equation}
+\label{eq:asymptotic_log_derivative}
+\frac{j_l'(k_1a)}{j_l(k_1a)} = - \frac{l+1}{k_1a} \quad \Rightarrow \quad j_l'(k_1a) = - \frac{l+1}{k_1a} j_l(k_1a)
+\end{equation}
+
+and comparing \eqref{eq:asymptotic_log_derivative} with \eqref{eq:bessel_derivative} we must have
+
+\begin{equation}
+j_{l-1}(k_1a) = 0
+\end{equation}
+
+Naming by \( z_{1,l} \) the first zero of the \( l^{th} \) Bessel function, we can easily obtain the minimum value of \(V_0a^2 \) for which a bound state emerges
+
+\begin{equation}
+k_1a = \frac{\sqrt{2mV_0}}{\hbar^2}a = z_{1,l} \quad \Rightarrow \quad V_0a^2 = \frac{\hbar^2}{2m}z_{1,l}^2
+\end{equation}
+
+As \(z_{1,l} \) is increasing with \(l\), we can conclude that \(V_0a^2\) is increasing monotonically with \(l\).
 
 \section{Double well potential}
 
