@@ -4,9 +4,13 @@
 
 \usepackage{bm}
 
+\usepackage{physics}
+
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \graphicspath{{img/}}
+
+\everymath{\displaystyle}
 
 \begin{document}
 
@@ -16,6 +20,104 @@
 \maketitle
 
 \section{Oscillating wavepacket}
+
+\subsection{Time evolution of \(\psi\)}
+To compute the time evolution of the state
+
+\begin{equation}
+\psi(x,0) = N_0 e^{-\frac{1}{2} \alpha^2 (x-a)^2}
+\end{equation}
+
+we can project the state on the eigenstates of the energy
+
+\begin{equation}
+\psi(x,0) = \sum_{n} \braket{\psi_n}{\psi} \ket{\psi_n} = \int dx' \psi_n^*(x') \psi(x') \psi_n(x)
+\end{equation}
+
+and then add the time evolution phase factor for each eigenstate
+
+\begin{equation}
+\psi(x,t) = \sum_{n} \int dx' \psi_n^*(x') \psi(x') \psi_n(x) e^{-i \frac{E_n}{\hbar} t}
+\end{equation}
+
+The expression of the eigenstates of the energy for the harmonic oscillator is
+
+\begin{equation}
+\psi_n(x) = \frac{\alpha^{\frac{1}{2}}}{\pi^{\frac{1}{4}} \sqrt{2^n n!}} e^{-\frac{(\alpha x)^2}{2}} H_n(\alpha x)
+\end{equation}
+
+where \( H_n(x) \) is the \(n^{th}\) degree Hermite polynomial, whose definition is given by
+
+\begin{equation}
+H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2}
+\end{equation}
+
+First of all, let's compute the projection of \( \psi \) on the eigenstate \( \psi_n \)
+
+\begin{align}
+& \int dx \, \psi_n^*(x) \psi(x) = \nonumber \\
+& = \frac{(-1)^n N_0 \alpha^{\frac{1}{2} - n}}{\pi^{\frac{1}{4}} \sqrt{2^n n!}} \int dx \, e^{\frac{(\alpha x)^2}{2}} \frac{d^n}{dx^n} \left[ e^{-(\alpha x)^2} \right] e^{-\frac{\alpha^2(x-a)^2}{2}} \nonumber \\
+& = \frac{(-1)^n N_0 \alpha^{\frac{1}{2} - n}}{\pi^{\frac{1}{4}} \sqrt{2^n n!}} e^{-\frac{1}{2} \alpha^2 a^2} \int dx \, \frac{d^n}{dx^n} \left[ e^{-(\alpha x)^2} \right] e^{a \alpha^2 x} \nonumber \\
+& = k \int dx \, \frac{d^n}{dx^n} \left[ e^{-(\alpha x)^2} \right] e^{a \alpha^2 x} \nonumber \\
+& = k \left\{ \left[ \frac{d^{n-1}}{dx^{n-1}} \left[ e^{-(\alpha x)^2} \right] e^{a\alpha^2x} \right]_{-\infty}^{\infty} \right\} - k \int dx \, \frac{d^{n-1}}{dx^{n-1}} \left[ e^{-(\alpha x)^2} \right] a \alpha^2 e^{a \alpha^2 x} \nonumber \\
+& = - k \left\{ \left[ \frac{d^{n-2}}{dx^{n-2}} \left[ e^{-(\alpha x)^2} \right] a \alpha^2 e^{a\alpha^2x} \right]_{-\infty}^{\infty} \right\} + k \int dx \, \frac{d^{n-2}}{dx^{n-2}} \left[ e^{-(\alpha x)^2} \right] (a \alpha^2)^2 e^{a \alpha^2 x} \nonumber \\
+& = \ldots = k (-1)^n (a \alpha^2)^n \int dx \, e^{-\alpha^2 (x^2 + ax)} \nonumber \\
+& = k (-1)^n (a \alpha^2)^n \int dx \, e^{-\alpha^2 (x^2 + ax)} \frac{\sqrt{\pi}}{\alpha} e^{\frac{a^2 \alpha^2}{4}} \nonumber \\
+& = \frac{N_0 \pi^{\frac{1}{4}}}{\sqrt{2^n n!}} \alpha^{-\frac{1}{2}+n} a^n e^{-\frac{a^2 \alpha^2}{4}}
+\end{align}
+
+The explicit expression of \( E_n \) is
+
+\begin{equation}
+E_n = \hbar \omega \left( n + \frac{1}{2} \right)
+\end{equation}
+
+and the time evolution of \( \psi \) is given by
+
+\begin{align}
+\psi(x,t) & = \sum_n \int dx' \, \psi_n(x')_* \psi_n(x') \psi_n(x) e^{-i \frac{E_n}{\hbar}t} \nonumber \\
+& = N_0 e^{-\frac{(\alpha x^2)}{2}} e^{-\frac{(\alpha a)^2}{4}} e^{-i \frac{\omega}{2} t} \sum_n \frac{\alpha^n a^n}{2^n n!} H_n(\alpha x) e^{-i \omega n t} \nonumber \\
+& = N_0 e^{-\frac{(\alpha x^2)}{2}} e^{-\frac{(\alpha a)^2}{4}} e^{-i \frac{\omega}{2} t} \sum_n \frac{H_n(\alpha x)}{n!} \left( \frac{\alpha a e^{-i \omega n t}}{2} \right)^n
+\end{align}
+
+To proceed with the computation, we report the expression of the generating function of Hermite polynomials
+
+\begin{equation}
+\sum_n \frac{H_n(x)}{n!} t^n = e^{2xt-t^2}
+\end{equation}
+
+Then we have
+
+\[
+\sum_n \frac{H_n(\alpha x)}{n!} \left( \frac{\alpha a e^{-i\omega t}}{2} \right)^n = e^{\frac{\alpha^2 a}{2} x e^{-i \omega t} - \frac{\alpha^2 a^2}{4}e^{-2i \omega t}}
+\]
+
+and \( \psi(x,t) \) is
+
+\begin{equation}
+\psi(x,t) = N_0 e^{-\frac{\alpha^2 a^2}{4}\left( 1 + e^{-2i \omega t} \right)} e^{-i \frac{\omega}{2} t} e^{-\frac{(\alpha x^2)}{2}} e^{\alpha^2 a x e^{-i \omega t}}
+\end{equation}
+
+\subsection{Computation of density}
+To compute the density
+
+\begin{equation}
+\rho(x,t) = |\psi(x,t)|^2
+\end{equation}
+
+we first rewrite \( \psi(x,t) \) separating complex and real exponentials
+
+\begin{align}
+\psi(x,t) & = N_0 e^{-\frac{\alpha^2 a^2}{4}\left(1 + cos(2\omega t) - i \, sin(2 \omega t) \right)} e^{-i \frac{\omega}{2} t} e^{-\frac{(\alpha x)^2}{2}} e^{\alpha^2 a x (cos(\omega t) - i \, sin(\omega t))} \nonumber \\
+& = N_0 e^{-\frac{\alpha^2 a^2}{4}\left(1 + cos(2\omega t) \right)} e^{-\frac{(\alpha x)^2}{2}} e^{\alpha^2 a x \, cos(\omega t)} e^{-i \alpha^2 a x \, sin(\omega t)} e^{i \frac{\alpha^2 a^2}{4}sin(2\omega t)} e^{-i \frac{\omega}{2} t}
+\end{align}
+
+then it is easy to see that the comlex exponentials cancel out and the result is given by the square of real exponentials
+
+\begin{align}
+\rho(x,t) & = |\psi(x,t)|^2 = |\psi^*(x,t) \psi(x,t)|^2 = \nonumber \\
+& = N_0 e^{-\frac{\alpha^2 a^2}{2}\left(1 + cos(2\omega t) \right)} e^{-(\alpha x)^2} e^{2 \alpha^2 a x \, cos(\omega t)}
+\end{align}
 
 \section{3D square well}
 
