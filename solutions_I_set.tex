@@ -620,4 +620,191 @@ In fig. \ref{ex_1_3_ground_energies} we can see the intersections revealing the 
 \label{ex_1_3_psi}
 \end{figure}
 
+\section{Rabi pulses}
+
+\subsection{Equation for \(C_{\pm}(t) \)}
+The two-state problem is defined by the hamiltonian
+
+\begin{equation}
+H_0 = \frac{\hbar}{2} \omega \sigma_z
+\end{equation}
+
+plus a time-dependet perturbation
+
+\begin{equation}
+V(t) = v_o \frac{\hbar}{2} sin(\tilde{\omega} t) \sigma_x
+\end{equation}
+
+The eigenstates of \(H_0\) are \( \ket{\psi_+} \) and \( \ket{\psi_-} \), such that working in the interaction picture we have
+
+\begin{equation}
+\ket{\psi(t)} = c_+(t) \ket{\psi_+} + c_-(t) \ket{\psi_-}
+\end{equation}
+
+and the equation for the coefficients is (making the time dependence implicit)
+
+\begin{equation}
+i\hbar
+  \begin{pmatrix}
+    \dot{c}_- \\
+    \dot{c}_+
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    V_{11} & V_{12}e^{i \omega_- t} \\
+    V_{21}e^{i \omega_+ t} & V_{22}
+  \end{pmatrix}
+  \begin{pmatrix}
+    c_- \\
+    c_+
+  \end{pmatrix}
+\end{equation}
+
+with
+
+\begin{equation}
+E_- = \bra{\psi_-} H_0 \ket{\psi_-} = -\frac{\hbar \omega}{2} = - E_+
+\end{equation}
+
+\begin{equation}
+\omega = \omega_+ = \frac{E_+ - E_-}{\hbar} = -\omega_-
+\end{equation}
+
+Making the potential explicit we obtain
+
+\begin{equation}
+i\hbar
+  \begin{pmatrix}
+    \dot{c}_- \\
+    \dot{c}_+
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    0 & v_o \frac{\hbar}{2} sin(\tilde{\omega} t) e^{i \omega_- t} \\
+    v_o \frac{\hbar}{2} sin(\tilde{\omega} t) e^{i \omega_+ t} & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    c_- \\
+    c_+
+  \end{pmatrix}
+\end{equation}
+
+from which we get the final system of differential equations for the coefficients
+
+\begin{equation}
+\label{eq:c_diff_eq}
+  \begin{cases} 
+      i\hbar \dot{c}_- = \frac{1}{2} \hbar v_0 sin(\tilde{\omega}t) e^{-i \omega t} c_+ = \frac{1}{4i} \hbar v_0 \left( e^{i(\tilde{\omega}-\omega)t} - e^{-i(\tilde{\omega}+\omega)t} \right) c_+ \\
+      i\hbar \dot{c}_+ = \frac{1}{2} \hbar v_0 sin(\tilde{\omega}t) e^{i \omega t} c_- = \frac{1}{4i} \hbar v_0 \left( e^{i(\tilde{\omega}+\omega)t} - e^{-i(\tilde{\omega}-\omega)t} \right) c_-
+   \end{cases}
+\end{equation}
+
+\subsection{Solution in rotating wave approximation}
+Working with the rotating wave approximation, we have
+
+\begin{equation}
+\frac{\omega-\tilde{\omega}}{\omega} \ll 1 \quad \Rightarrow \quad \omega - \tilde{\omega} \ll \omega + \tilde{\omega}
+\end{equation}
+
+so we can neglect the terms of higher frequency in eq. \eqref{eq:c_diff_eq} to obtain
+
+\begin{equation}
+\label{eq:c_diff_eq_approx}
+  \begin{cases} 
+      i\hbar \dot{c}_- = \frac{1}{4i} \hbar v_0 e^{i(\tilde{\omega}-\omega)t} c_+ \\
+      i\hbar \dot{c}_+ = - \frac{1}{4i} \hbar v_0 e^{-i(\tilde{\omega}-\omega)t} c_-
+   \end{cases}
+\end{equation}
+
+Substituting the trial solution
+
+\begin{equation}
+\label{eq:trial_solution}
+  \begin{pmatrix}
+    c_- \\
+    c_+
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    a_- e^{i\frac{\tilde{\omega} - \omega}{2}t} \\
+    a_+ e^{-i\frac{\tilde{\omega} - \omega}{2}t}
+  \end{pmatrix}
+\end{equation}
+
+into eq. \eqref{eq:c_diff_eq_approx} we get
+
+\begin{equation}
+  \begin{cases}
+    a_- = \frac{i\hbar}{\gamma^*} \left( i\frac{(\tilde{\omega}-\omega)t}{2} a_+ + \dot{a}_+ \right) \\
+    a_+ = \frac{i\hbar}{\gamma} \left( i\frac{(\tilde{\omega}-\omega)t}{2} a_- + \dot{a}_- \right) \\
+  \end{cases}
+\end{equation}
+
+with \( \gamma = \frac{\hbar v_0}{4i} \).
+
+Substituting the explicit expressions of \( a_- \) and \( a_+ \) into eq. \eqref{eq:trial_solution} and then plugging the result back into eq. \eqref{eq:c_diff_eq_approx} we get the second order differential equation
+
+\begin{equation}
+  \begin{cases}
+    \ddot{a}_- = - \left( \frac{\gamma^2}{\hbar^2} + \frac{(\tilde{\omega}-\omega)^2}{4} \right) a_- \\
+    \ddot{a}_+ = - \left( \frac{\gamma^2}{\hbar^2} + \frac{(\tilde{\omega}-\omega)^2}{4} \right) a_+ \\
+  \end{cases}
+\end{equation}
+
+for which the solution will look like
+
+\begin{equation}
+a_+ \sim sin \left[ \left( \frac{\gamma^2}{\hbar^2} + \frac{(\tilde{\omega}-\omega)^2}{4} \right)^{\frac{1}{2}} t \right]
+\end{equation}
+
+Given the initial conditions
+
+\begin{equation}
+c_-(0) = 1, \quad c_+(0) = 0
+\end{equation}
+
+the solution for \( c_+(t) \) is
+
+\begin{equation}
+\label{eq:c+}
+c_+(t) = e^{-i \frac{\tilde{\omega}-\omega}{2}t} sin \left[ \left( \frac{\gamma^2}{\hbar^2} + \frac{(\tilde{\omega}-\omega)^2}{4} \right)^{\frac{1}{2}} t \right]
+\end{equation}
+
+\subsection{Maximum transfer and unitary fidelity}
+From eq. \eqref{eq:c+} we get
+
+\begin{equation}
+\label{eq:c+2}
+|c_+(t)|^2 = \frac{\gamma^2 / \hbar^2}{\gamma^2 / \hbar^2 + (\tilde{\omega}-\omega)^2/4} sin \left[ \left( \frac{\gamma^2}{\hbar^2} + \frac{(\tilde{\omega}-\omega)^2}{4} \right)^{\frac{1}{2}} t \right]
+\end{equation}
+
+\begin{equation}
+|c_-(t)|^2 = 1 - |c_+(t)|^2 
+\end{equation}
+
+It is easy to see that the probability of being found in \( \psi_+ \) is maximum for
+
+\begin{equation}
+\tilde{\omega} = \omega
+\end{equation}
+
+which is called "resonance condition". This is the situation for which the transfer is maximum and eq. \eqref{eq:c+2} becomes
+
+\begin{equation}
+\label{eq:c+2_resonance}
+|c_+(t)|^2 = sin^2\left(\frac{\gamma}{\hbar}t\right)
+\end{equation}
+
+The fidelity is given by
+
+\begin{equation}
+F = |\braket{\psi(t)}{\psi_+}| = |c_+^*(t)| = |c_+(t)|
+\end{equation}
+
+and from eq. \eqref{eq:c+2_resonance} it is clear that it is maximum for
+
+\begin{equation}
+|c_+(t)|^2 = sin^2\left(\frac{\gamma}{\hbar}t\right) = 0 \quad \Rightarrow \quad t = \frac{\hbar \pi}{2 \gamma} (2n +1)
+\end{equation}
+
 \end{document}
