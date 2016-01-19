@@ -82,7 +82,74 @@ G_{\pm}(\bm{x},\bm{x'}) = -\frac{1}{4\pi} \frac{e^{\pm ik |\bm{x}-\bm{x'}|}}{|\b
 \end{equation}
 
 \subsection{Determination of Rutherford cross section}
+Applying the Born approximation the differential cross section is given by
 
+\begin{equation}
+\frac{d\sigma}{d\Omega} \simeq |f^{(1)}(\theta)|^2
+\end{equation}
+
+with
+
+\begin{equation}
+\label{eq:f_born}
+f^{(1)}(\theta) = -\frac{2m}{\hbar^2} \frac{1}{q} \int_0^{\infty} rV(r)sin(qr) dr
+\end{equation}
+
+Considering scattering by a Yukawa potential we have
+
+\begin{equation}
+V(r) = \frac{V_0 e^{-\mu r}}{\mu r}
+\end{equation}
+
+for which \( V(r) \to 0\) very rapidly for \( r \gg 1/\mu \) and we can then consider the potential to act in a finite range.
+
+Substituting the potential into eq. \eqref{eq:f_born} we obtain
+
+\begin{equation}
+f^{(1)}(\theta) = -\left(\frac{2mV_0}{\mu \hbar^2}\right) \frac{1}{q^2+\mu^2}
+\end{equation}
+
+where we have used
+
+\begin{equation}
+Im \left[ \int_0^{\infty} e^{-\mu r} e^{iqr} dr \right] = - Im \left[\frac{1}{-\mu + iq} \right] = \frac{q}{\mu^2 + q^2}
+\end{equation}
+
+and given
+
+\begin{equation}
+q^2 = 4k^2sin^2\frac{\theta}{2} = 2k^2(1-cos\theta)
+\end{equation}
+
+we have
+
+\begin{equation}
+\left( \frac{d\sigma}{d\Omega} \right) \simeq \left( \frac{2mV_0}{\mu\hbar^2} \right)^2 \frac{1}{[2k^2(1-cos\theta) + \mu^2]^2}
+\end{equation}
+
+Now letting
+
+\[
+\mu \to 0
+\]
+
+\[
+\frac{V_0}{\mu} = \text{constant} = ZZ'e^2
+\]
+
+we see that the Yukawa potential becomes the Coulomb potential and we have
+
+\begin{equation}
+\frac{d\sigma}{d\Omega} \simeq \frac{(2m)^2(ZZ'e^2)^2}{\hbar^4} \frac{1}{16k^4sin^4(\theta/2)}
+\end{equation}
+
+Identifying \( \hbar k \) with \(|\bm{p}|\) we can get rid of \(\hbar\) to obtain
+
+\begin{equation}
+\frac{d\sigma}{d\Omega} \simeq  \frac{1}{16} \left( \frac{ZZ'e^2}{E_{KE}} \right)^2 \frac{1}{sin^4(\theta/2)}, \quad E_{KE} = \frac{|\bm{p}|^2}{2m}
+\end{equation}
+
+which is precisely the Rutherford scattering cross section that can be obtained classically.
 
 \section{Variational methods}
 
