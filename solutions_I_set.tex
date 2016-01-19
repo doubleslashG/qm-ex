@@ -916,4 +916,105 @@ and from eq. \eqref{eq:c+2_resonance} it is clear that it is maximum for
 |c_+(t)|^2 = sin^2\left(\frac{\gamma}{\hbar}t\right) = 0 \quad \Rightarrow \quad t = \frac{\hbar \pi}{2 \gamma} (2n +1)
 \end{equation}
 
+\section{From the ground to the first excited state}
+
+\subsection{Choice of the operator O}
+
+The problem is defined by the hamiltonian of the harmonic oscillator
+
+\begin{equation}
+H_0 = \frac{p^2}{2m} + \frac{1}{2} m \omega^2 x^2
+\end{equation}
+
+plus a time-dependent perturbation
+
+\begin{align}
+V(t) & = \lambda \bm{O} sin(\tilde{\omega}t) \nonumber \\
+& = \frac{\lambda}{2i} \bm{O} e^{i\tilde{\omega}t} - \frac{\lambda}{2i} \bm{O} e^{-i\tilde{\omega}t} \nonumber \\
+& = \bm{q} e^{i\tilde{\omega}t} + \bm{q}^{\dagger} e^{-i\tilde{\omega}t}, \quad \bm{q} = \frac{\lambda}{2} \bm{O}
+\end{align}
+
+The fidelity is
+
+\begin{equation}
+F = \left| \braket{\psi(x,t)}{\psi_1(x)} \right| = \left| c_1^*(t) \right| = \left| c_1(t) \right|
+\end{equation}
+
+and we have
+
+\begin{equation}
+\psi(x,0) = \psi_0(x)
+\end{equation}
+
+In the framework of time-dependent perturbation theory the first order term of the expansion for the transition probability \( i \rightarrow n \) with a harmonic perturbation is given by
+
+\begin{align}
+\label{eq:c1_exp}
+c_n^{(1)}(t) & = -\frac{i}{\hbar} \int_{t_0}^t \bra{n} V(t') \ket{i} dt' \nonumber \\
+& = -\frac{i}{\hbar} \int_{t_0}^t \left( \bm{q}_{ni} e^{i\omega t} + \bm{q}_{ni}^{\dagger} e^{-i\omega t}\right) e^{i\omega_{ni}t'} dt'
+\end{align}
+
+To maximize the value of \( |c_1^{(1)}| \) we can restrict the dynamics to the space spanned by \( \ket{\psi_0} \) and \( \ket{\psi_1} \) such that the system initially prepared in state \( \ket{\psi_0} \) can only be found in a combination of states \( \ket{\psi_0} \) and \( \ket{\psi_1} \) at a later time. The only non-null terms in eq. \eqref{eq:c1_exp} must then be \( \bm{q_{01}} \) and \( \bm{q_{10}} \) and the operator \( \bm{O} \) for which this is achieved is the following
+
+\begin{equation}
+\bm{O} =
+  \begin{pmatrix}
+    0 & 1 & 0 & \cdots \\
+    1 & 0 & 0 & \cdots \\
+    0 & 0 & 0 & \cdots \\
+    \vdots & \vdots & \vdots & \ddots
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    \sigma_x & 0 \\
+    0 & 0
+  \end{pmatrix}
+\end{equation}
+
+\subsection{Computation of the fidelity}
+
+Acting as for exercise 4, we write the differential equation for the coefficients
+
+\begin{equation}
+i \hbar
+  \begin{pmatrix}
+    \dot{c}_0 \\
+    \dot{c}_1 \\
+    \vdots
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    0 & V_{01}e^{-i\omega t} & 0 & \cdots \\
+    V_{10}{i\omega t} & 0 & 0 & \cdots \\
+    0 & 0 & 0 & \cdots \\
+    \vdots & \vdots & \vdots & \ddots
+  \end{pmatrix}
+  \begin{pmatrix}
+    c_0 \\
+    c_1 \\
+    \vdots
+  \end{pmatrix}
+\end{equation}
+
+Given our choice for \( \bm{O} \), we obtain a system of two differential equations in the same form as before
+
+\begin{equation}
+  \begin{cases}
+    i\hbar \dot{c}_0 = \frac{\lambda}{2i} \left( e^{i(\tilde{\omega}-\omega)t} - e^{-i(\tilde{\omega}+\omega)t} \right) c_1 \\
+    i\hbar \dot{c}_1 = \frac{\lambda}{2i} \left( e^{i(\tilde{\omega}+\omega)t} - e^{-i(\tilde{\omega}-\omega)t} \right)
+  \end{cases}
+\end{equation}
+
+whose solution in rotating wave approximation leads to the following expression for the fidelity as a function of \(t\)
+
+\begin{equation}
+F = |c_1(t)| = \sqrt{\frac{\gamma^2/\hbar^2}{\gamma^2/\hbar^2 + (\tilde{\omega}-\omega)^2/4}} \left| sin \left[\left(\frac{\gamma^2}{\hbar^2} + \frac{(\tilde{\omega}-\omega)^2}{4} \right)^{\frac{1}{2}} t \right] \right|
+\end{equation}
+
+with
+
+\begin{equation}
+\gamma = \frac{\lambda}{2i}
+\end{equation}
+
 \end{document}
