@@ -55,6 +55,7 @@ H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2}
 First of all, let's compute the projection of \( \psi \) on the eigenstate \( \psi_n \)
 
 \begin{align}
+\label{eq:cn}
 & \int dx \, \psi_n^*(x) \psi(x) = \nonumber \\
 & = \frac{(-1)^n N_0 \alpha^{\frac{1}{2} - n}}{\pi^{\frac{1}{4}} \sqrt{2^n n!}} \int dx \, e^{\frac{(\alpha x)^2}{2}} \frac{d^n}{dx^n} \left[ e^{-(\alpha x)^2} \right] e^{-\frac{\alpha^2(x-a)^2}{2}} \nonumber \\
 & = \frac{(-1)^n N_0 \alpha^{\frac{1}{2} - n}}{\pi^{\frac{1}{4}} \sqrt{2^n n!}} e^{-\frac{1}{2} \alpha^2 a^2} \int dx \, \frac{d^n}{dx^n} \left[ e^{-(\alpha x)^2} \right] e^{a \alpha^2 x} \nonumber \\
@@ -112,12 +113,48 @@ we first rewrite \( \psi(x,t) \) separating complex and real exponentials
 & = N_0 e^{-\frac{\alpha^2 a^2}{4}\left(1 + cos(2\omega t) \right)} e^{-\frac{(\alpha x)^2}{2}} e^{\alpha^2 a x \, cos(\omega t)} e^{-i \alpha^2 a x \, sin(\omega t)} e^{i \frac{\alpha^2 a^2}{4}sin(2\omega t)} e^{-i \frac{\omega}{2} t}
 \end{align}
 
-then it is easy to see that the comlex exponentials cancel out and the result is given by the square of real exponentials
+then it is easy to see that the complex exponentials cancel out and the result is given by the square of real exponentials
 
 \begin{align}
 \rho(x,t) & = |\psi(x,t)|^2 = |\psi^*(x,t) \psi(x,t)|^2 = \nonumber \\
 & = N_0 e^{-\frac{\alpha^2 a^2}{2}\left(1 + cos(2\omega t) \right)} e^{-(\alpha x)^2} e^{2 \alpha^2 a x \, cos(\omega t)}
 \end{align}
+
+\subsection{Expectation value of energy}
+
+\begin{align}
+\left\langle H \right\rangle & = \bra{\psi(t)} H \ket{\psi(t)} \nonumber \\
+& = \sum_n \sum_{n'} \braket{\psi(t)}{n}\bra{n} H \ket{n'}\braket{n'}{\psi(t)} \nonumber \\
+& = \sum_n \sum_{n'} c_n^*(t) \bra{n} E_{n'} \ket{n'} c_{n'}(t) \nonumber \\
+& = \sum_n c_n^*(t) c_n(t) E_n \nonumber \\
+& = \sum_n |c_n(t)|^2 E_n 
+\end{align}
+
+As the time evolution just introduces a phase factor and given eq. \eqref{eq:cn} we have
+
+\begin{equation}
+|c_n(t)|^2 = |c_n(t=0)|^2 = \frac{N_0^2 \pi^{\frac{1}{2}}}{2^n n!} \alpha^{2n-1}a^{2n} e^{-\frac{a^2\alpha^2}{2}}
+\end{equation}
+
+and then
+
+\begin{align}
+\left\langle H \right\rangle & = \frac{N_0^2 \pi^{\frac{1}{2}}}{\alpha} e^{-\frac{a^2\alpha^2}{2}} \sum_n \frac{\alpha^{2n} a^{2n}}{2^n n!} \hbar \omega \left(n + \frac{1}{2} \right) \nonumber \\
+& = \frac{N_0^2 \pi^{\frac{1}{2}}}{\alpha} \hbar \omega  e^{-\frac{a^2\alpha^2}{2}} \left( \left(\frac{\alpha^{2} a^{2}}{2}\right) \sum_n \left(\frac{\alpha^{2} a^{2}}{2}\right)^{n-1} \frac{1}{(n-1)!} + \frac{1}{2} \sum_n \left(\frac{\alpha^{2} a^{2}}{2}\right)^n \frac{1}{n!} \right) \nonumber \\
+& = \frac{1}{2} \frac{N_0^2 \pi^{\frac{1}{2}}}{\alpha} \hbar \omega \left(\alpha^2 a^2 +1 \right)
+\end{align}
+
+Making \(N_0\) explicit
+
+\begin{equation}
+N_0 = \sqrt{\frac{\alpha}{\sqrt{\pi}}}
+\end{equation}
+
+we get in the end
+
+\begin{equation}
+\left\langle H \right\rangle = \frac{1}{2} \hbar \omega \left(\alpha^2 a^2 +1 \right)
+\end{equation}
 
 \section{3D square well}
 
