@@ -22,6 +22,68 @@
 
 \section{Scattering theory}
 
+\subsection{Computation of Green’s functions}
+
+We want to find an explicit expression for
+
+\begin{equation}
+G_{\pm}(\bm{x},\bm{x'}) = \frac{\hbar^2}{2m} \bra{\bm{x}} \frac{1}{E - H_0 \pm i\varepsilon} \ket{\bm{x'}}
+\end{equation}
+
+Making use of the completeness relation for \( \bm{p} \) and letting \( H_0 \) act on \( \bra{\bm{p'}} \), the right-hand side of the equation becomes
+
+\begin{equation}
+\frac{\hbar^2}{2m} \int d^3p' \int d^3p'' \braket{\bm{x}}{\bm{p'}} \bra{\bm{p'}} \frac{1}{E - (\bm{p'}^2/2m) \pm i\varepsilon} \ket{\bm{p''}} \braket{\bm{p''}}{\bm{x'}}
+\end{equation}
+
+in which the various terms are given by
+
+\begin{equation}
+\bra{\bm{p'}} \frac{1}{E - (\bm{p'}^2/2m) \pm i\varepsilon} \ket{\bm{p''}} = \frac{\delta^3(\bm{p'}-\bm{p''})}{E - (\bm{p'}/2m) \pm i \varepsilon}
+\end{equation}
+
+\begin{equation}
+\braket{x}{p'} = \frac{e^{i\bm{p' \cdot x'}/\hbar}}{(2\pi\hbar)^{\frac{3}{2}}}
+\end{equation}
+
+\begin{equation}
+\braket{p''}{x'} = \frac{e^{-i\bm{p'' \cdot x'}/\hbar}}{(2\pi\hbar)^{\frac{3}{2}}}
+\end{equation}
+
+and then we obtain
+
+\begin{equation}
+G_{\pm}(\bm{x},\bm{x'}) = \frac{\hbar^2}{2m} \int \frac{d^3p'}{(2\pi\hbar)^3} \frac{e^{i\bm{p'}(\bm{x}-\bm{x'}/\hbar}}{[E - (\bm{p'}^2/2m) \pm i \varepsilon}
+\end{equation}
+
+The integral can be expressed in spherical coordinates and we set \(\bm{p'} = \hbar\bm{q} \) and \( E = \frac{\hbar^2k^2}{2m} \) to obtain
+
+\begin{align}
+G_{\pm}(\bm{x},\bm{x'}) & = \frac{1}{(2\pi)^3} \int_0^{\infty} q^2 dq \int_0^{2\pi} d\phi \int_{-1}^{+1} \frac{d(cos\theta)e^{i|\bm{q}||\bm{x}-\bm{x'}|cos\theta}}{k^2-q^2\pm i\varepsilon} \nonumber \\
+& = -\frac{1}{8\pi^2} \frac{1}{i|\bm{x}-\bm{x'}|} \int_{-\infty}^{+\infty} \frac{dq \, q \left( e^{iq|\bm{x}-\bm{x'}|} - e^{-iq|\bm{x}-\bm{x'}|} \right)}{q^2 - k^2 \mp i\varepsilon}
+\end{align}
+
+Applying the Residues theorem
+
+\begin{equation}
+\oint_{\gamma} f(z) dz = 2\pi i \sum Res(f,z_k), \quad Res(f,z_0) = \lim_{z\to z_0}(z-z_0)f(z) 
+\end{equation}
+
+with the poles of the integrand equals to
+
+\begin{equation}
+z = \pm k \sqrt{1\pm \left(\frac{i\varepsilon}{k^2}\right)} \simeq \pm k \pm i\varepsilon'
+\end{equation}
+
+we obtain the final result
+
+\begin{equation}
+G_{\pm}(\bm{x},\bm{x'}) = -\frac{1}{4\pi} \frac{e^{\pm ik |\bm{x}-\bm{x'}|}}{|\bm{x}-\bm{x'}|}
+\end{equation}
+
+\subsection{Determination of Rutherford cross section}
+
+
 \section{Variational methods}
 
 \subsection{Choice of the ground-state wavefunction}
