@@ -234,6 +234,7 @@ k_1 = k_2 cot(k_2(a-L))
 As \(k_1 \rightarrow \infty\) the argument of the cotangent must be
 
 \begin{equation}
+\label{eq:k2_v0big}
 k_2(a-L) = (2n+1)\pi
 \end{equation}
 
@@ -243,8 +244,84 @@ and the energy for both even and odd states is
 E_0 = \frac{\hbar^2 \pi^2}{2m(a-L)^2}
 \end{equation}
 
-We then see that for \( V_0 \rightarrow \infty \) the difference in energy is null and then there is complete degeneracy.
+We then see that for \( V_0 \rightarrow \infty \) the difference in energy is null and there is complete degeneracy.
 
+For \(V_0 \gg E \), instead, we have \(k_1a \gg 1\) and then \(e^{-2k_1a} \rightarrow 0\) such that we can expand \(tanh(k_1a)\) as follows
 
+\begin{align}
+tanh(k_1a) & = \frac{1-e^{-2k_1a}}{1+e^{2k_1a}} \approx \left(1-e^{-2k_1a}\right) \left(1-e^{-2k_1a} + O\left(e^{-4k_1a}\right) \right) \nonumber \\
+& = 1-2e^{-2k_1a} + O\left(e^{-4k_1a}\right)
+\end{align}
+
+and 
+
+\begin{align}
+coth(k_1a) & = \frac{1+e^{-2k_1a}}{1-e^{2k_1a}} \approx \left(1+e^{-2k_1a}\right) \left(1+e^{-2k_1a} + O\left(e^{-4k_1a}\right) \right) \nonumber \\
+& = 1+2e^{-2k_1a} + O\left(e^{-4k_1a}\right)
+\end{align}
+
+Eq. \eqref{eq:trans_even} and \eqref{eq:trans_odd} then become
+
+\begin{equation}
+\label{eq:trans_approx_left_even}
+k_1a \left( 1-2e^{-2k_1a} + O\left(e^{-4k_1a}\right) \right) = k_2cot(k_2(a-L))
+\end{equation}
+
+\begin{equation}
+\label{eq:trans_approx_left_odd}
+k_1a \left( 1+2e^{-2k_1a} + O\left(e^{-4k_1a}\right) \right) = k_2cot(k_2(a-L))
+\end{equation}
+
+For \(V_0\) big we get from eq. \eqref{eq:k2_v0big}
+
+\begin{equation}
+\frac{k_2}{a-L} \approx \pi \quad \Rightarrow \quad k_2(a-L) = \pi - \epsilon, \, \epsilon \text{ small}
+\end{equation}
+
+such that we can expand
+
+\begin{equation}
+k_2a cot(k_2(a-L)) = \frac{k_2a \, cos(k_2(a-L))}{sin(k_2(a-L))} = \frac{k_2a}{\epsilon} + O(\epsilon)
+\end{equation}
+
+and plugging into eq. \eqref{eq:trans_approx_left_even} and \eqref{eq:trans_approx_left_odd}
+
+\begin{equation*}
+k_1a \left(1 \mp 2e^{-2k_1a} \right) = \frac{\pi a}{b \epsilon}
+\end{equation*}
+
+from which we get an expression for \(\epsilon\)
+
+\begin{align}
+\epsilon & = \frac{\pi}{k_1(a-L)\left(1 \mp 2e^{-2k_1a} \right)} \nonumber \\
+& = \frac{\pi \left(1 \mp 2e^{-2k_1a} \right)}{k_1(a-L)\left(1 + O\left(2e^{-4k_1a} \right) \right)} \nonumber \\
+& \approx \frac{\pi \left(1 \mp 2e^{-2k_1a} \right)}{k_1(a-L)}
+\end{align}
+
+Recalling the expression for \(k_2\)
+
+\begin{equation*}
+k_2 = \frac{\sqrt{2mE}}{\hbar^2}
+\end{equation*}
+
+and applying eq. \eqref{eq:k2_v0big} we get an expression for the energy
+
+\begin{equation}
+E = \frac{\hbar^2 k_2^2}{2m} = \frac{\hbar^2}{2m} \frac{(\pi - \epsilon)^2}{(a-L)^2} = \frac{\hbar^2 \pi^2}{2m(a-L)^2} \left(1 - \frac{1}{k_1(a-L)} \left( 1 \mp 2e^{-2k_1a} \right) \right)^2
+\end{equation}
+
+Neglecting higher order terms the expression for the energy is
+
+\begin{equation}
+E = \frac{\hbar^2 \pi^2}{2m(a-L)^2} \left(1 - \frac{2}{k_1(a-L)} \left( 1 \mp 2e^{-2k_1a} \right) \right)
+\end{equation}
+
+and making the difference between odd and even cases we get
+
+\begin{equation}
+\Delta E = \frac{\hbar^2 \pi^2}{2m(a-L)^2} \frac{8}{k_1(a-L)} e^{-2k_1a}
+\end{equation}
+
+from which we see that the split in the energy is bigger for \(k_1\) smaller and decays exponentially to \(0\) for increasing \(k_1\), such that for \(k_1 \rightarrow \infty\) we get back to complete degeneracy as previously observed.
 
 \end{document}
